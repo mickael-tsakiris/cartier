@@ -692,6 +692,7 @@ strong { font-weight: 600; }
     .question-box { background: #333; }
 }
     </style>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
 
@@ -709,7 +710,6 @@ strong { font-weight: 600; }
     <a href="#substitution" class="section" data-target="substitution">6. Substitution</a>
     <a href="#conclusions" class="section" data-target="conclusions">Conclusions</a>
     <a href="#reco" class="sub" data-target="reco">Recommandations</a>
-    <a href="#dataviz" class="section" data-target="dataviz">Data visualisation</a>
     <a href="#annexes" class="section" data-target="annexes">Annexes</a>
     <a href="#sources-requetes" class="sub" data-target="sources-requetes">Sources des requêtes</a>
     <a href="#questionnaire" class="sub" data-target="questionnaire">Questionnaire et réponses</a>
@@ -973,6 +973,33 @@ strong { font-weight: 600; }
     <p><strong>Cartier disparait du radar a 5 000 euros.</strong> Perplexity et Claude ne la citent pas du tout. Or, le petit modele Love (Love fin en or jaune) est a 5 350 euros. La bague Trinity classique en or est dans cette gamme. Il existe des points d'entree Cartier a ce budget — mais les agents ne le savent pas. C'est un trou de visibilité majeur sur le segment "premier achat de luxe".</p>
 </div>
 
+<div style="background: white; padding: 32px; border-radius: 4px; border: 1px solid #E5DDD3; margin: 32px 0;">
+    <div style="font-family: Inter, sans-serif; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: #B8965A; margin-bottom: 8px;">Scoring — Comparaison</div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: center;">
+        <canvas id="radar_inline_comparaison" height="280"></canvas>
+        <div>
+            <table style="width: 100%; font-family: Inter, sans-serif; font-size: 13px; border-collapse: collapse;">
+                <tr><td style="padding: 8px;">GPT-4o</td><td style="padding: 8px; text-align: center; background: #FFF8E7; font-weight: 600;">15.7/25</td></tr>
+                <tr><td style="padding: 8px;">Perplexity</td><td style="padding: 8px; text-align: center; background: #FFF8E7; font-weight: 600;">13.0/25</td></tr>
+                <tr><td style="padding: 8px;">Claude</td><td style="padding: 8px; text-align: center; background: #FFF8E7; font-weight: 600;">15.0/25</td></tr>
+            </table>
+        </div>
+    </div>
+</div>
+<script>
+new Chart(document.getElementById('radar_inline_comparaison'), {
+  type: 'radar',
+  data: { labels: ["Pr\u00e9sence", "Position", "Exactitude", "Narratif", "Actionnabilit\u00e9"], datasets: [
+    { label: 'GPT-4o', data: [5.0, 3.67, 4.67, 3.33, 3.0], borderColor: '#4A90D9', backgroundColor: 'rgba(74,144,217,0.1)', pointRadius: 3, borderWidth: 2 },
+    { label: 'Perplexity', data: [3.35, 2.67, 4.0, 2.67, 3.0], borderColor: '#4A9D6E', backgroundColor: 'rgba(74,157,110,0.1)', pointRadius: 3, borderWidth: 2 },
+    { label: 'Claude', data: [5.0, 3.33, 4.33, 3.33, 3.0], borderColor: '#D4845A', backgroundColor: 'rgba(212,132,90,0.1)', pointRadius: 3, borderWidth: 2 }
+  ] },
+  options: { scales: { r: { beginAtZero: true, max: 5, ticks: { stepSize: 1, font: { size: 11 } }, pointLabels: { font: { size: 12, family: 'Inter' } } } }, plugins: { legend: { labels: { font: { size: 12, family: 'Inter' } } } } }
+});
+</script>
+
+
+
 <!-- ===== 3. VALIDATION ===== -->
 
 <span class="moment-label">Troisieme moment</span>
@@ -1052,6 +1079,33 @@ strong { font-weight: 600; }
     <p><strong>Le sujet éthique est le plus sensible du benchmark.</strong> Perplexity est sans appel. Or, cette reponse est la première qu'un acheteur engage lira s'il pose la question. Cartier a pourtant des engagements reels (RJC, traçabilité, programme "Cartier for Nature") mais ces contenus ne sont visiblement pas assez structures pour etre captes par les agents IA. C'est un enjeu de reputation algorithmique.</p>
 </div>
 
+<div style="background: white; padding: 32px; border-radius: 4px; border: 1px solid #E5DDD3; margin: 32px 0;">
+    <div style="font-family: Inter, sans-serif; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: #B8965A; margin-bottom: 8px;">Scoring — Validation</div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: center;">
+        <canvas id="radar_inline_validation" height="280"></canvas>
+        <div>
+            <table style="width: 100%; font-family: Inter, sans-serif; font-size: 13px; border-collapse: collapse;">
+                <tr><td style="padding: 8px;">GPT-4o</td><td style="padding: 8px; text-align: center; background: #FFF8E7; font-weight: 600;">15.7/25</td></tr>
+                <tr><td style="padding: 8px;">Perplexity</td><td style="padding: 8px; text-align: center; background: #FFF8E7; font-weight: 600;">15.7/25</td></tr>
+                <tr><td style="padding: 8px;">Claude</td><td style="padding: 8px; text-align: center; background: #FFF8E7; font-weight: 600;">15.7/25</td></tr>
+            </table>
+        </div>
+    </div>
+</div>
+<script>
+new Chart(document.getElementById('radar_inline_validation'), {
+  type: 'radar',
+  data: { labels: ["Pr\u00e9sence", "Position", "Exactitude", "Narratif", "Actionnabilit\u00e9"], datasets: [
+    { label: 'GPT-4o', data: [5.0, 4.0, 4.67, 4.0, 2.0], borderColor: '#4A90D9', backgroundColor: 'rgba(74,144,217,0.1)', pointRadius: 3, borderWidth: 2 },
+    { label: 'Perplexity', data: [5.0, 4.0, 4.0, 4.0, 2.67], borderColor: '#4A9D6E', backgroundColor: 'rgba(74,157,110,0.1)', pointRadius: 3, borderWidth: 2 },
+    { label: 'Claude', data: [5.0, 4.0, 4.33, 3.67, 2.67], borderColor: '#D4845A', backgroundColor: 'rgba(212,132,90,0.1)', pointRadius: 3, borderWidth: 2 }
+  ] },
+  options: { scales: { r: { beginAtZero: true, max: 5, ticks: { stepSize: 1, font: { size: 11 } }, pointLabels: { font: { size: 12, family: 'Inter' } } } }, plugins: { legend: { labels: { font: { size: 12, family: 'Inter' } } } } }
+});
+</script>
+
+
+
 <!-- ===== 4. PROCESS ===== -->
 
 <span class="moment-label">Quatrieme moment</span>
@@ -1121,6 +1175,33 @@ strong { font-weight: 600; }
     <p>Les trois agents sont precis et coherents : gravure "Cartier", numero de serie, poincons (750 pour or 18K, 950 pour platine), qualité de fabrication, ecrin officiel. Claude ajoute le poids comme critere ("les contrefacons sont souvent plus legeres"). C'est l'une des rares questions ou les agents donnent une reponse operationnelle utile. A noter : aucun ne mentionne le service d'authentification officiel de Cartier.</p>
 </div>
 
+<div style="background: white; padding: 32px; border-radius: 4px; border: 1px solid #E5DDD3; margin: 32px 0;">
+    <div style="font-family: Inter, sans-serif; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: #B8965A; margin-bottom: 8px;">Scoring — Parcours d'achat</div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: center;">
+        <canvas id="radar_inline_process" height="280"></canvas>
+        <div>
+            <table style="width: 100%; font-family: Inter, sans-serif; font-size: 13px; border-collapse: collapse;">
+                <tr><td style="padding: 8px;">GPT-4o</td><td style="padding: 8px; text-align: center; background: #FFF8E7; font-weight: 600;">17.3/25</td></tr>
+                <tr><td style="padding: 8px;">Perplexity</td><td style="padding: 8px; text-align: center; background: #FFF8E7; font-weight: 600;">16.0/25</td></tr>
+                <tr><td style="padding: 8px;">Claude</td><td style="padding: 8px; text-align: center; background: #FFF8E7; font-weight: 600;">17.0/25</td></tr>
+            </table>
+        </div>
+    </div>
+</div>
+<script>
+new Chart(document.getElementById('radar_inline_process'), {
+  type: 'radar',
+  data: { labels: ["Pr\u00e9sence", "Position", "Exactitude", "Narratif", "Actionnabilit\u00e9"], datasets: [
+    { label: 'GPT-4o', data: [5.0, 4.0, 5.0, 3.67, 3.67], borderColor: '#4A90D9', backgroundColor: 'rgba(74,144,217,0.1)', pointRadius: 3, borderWidth: 2 },
+    { label: 'Perplexity', data: [5.0, 4.0, 4.0, 3.33, 3.67], borderColor: '#4A9D6E', backgroundColor: 'rgba(74,157,110,0.1)', pointRadius: 3, borderWidth: 2 },
+    { label: 'Claude', data: [5.0, 4.0, 4.33, 3.67, 4.0], borderColor: '#D4845A', backgroundColor: 'rgba(212,132,90,0.1)', pointRadius: 3, borderWidth: 2 }
+  ] },
+  options: { scales: { r: { beginAtZero: true, max: 5, ticks: { stepSize: 1, font: { size: 11 } }, pointLabels: { font: { size: 12, family: 'Inter' } } } }, plugins: { legend: { labels: { font: { size: 12, family: 'Inter' } } } } }
+});
+</script>
+
+
+
 <!-- ===== 5. INVESTISSEMENT ===== -->
 
 <span class="moment-label">Cinquieme moment</span>
@@ -1168,6 +1249,33 @@ strong { font-weight: 600; }
     <span class="verdict verdict-good">Positif</span>
     <p>Cartier est favorisee sur l'investissement par les trois plateformes. Le chiffre de 65 % de la croissance joaillerie Richemont (cite par Perplexity) est un argument fort. La distinction de Claude entre liquidite (Cartier) et appreciation (Van Cleef) est pertinente et honnete.</p>
 </div>
+
+<div style="background: white; padding: 32px; border-radius: 4px; border: 1px solid #E5DDD3; margin: 32px 0;">
+    <div style="font-family: Inter, sans-serif; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: #B8965A; margin-bottom: 8px;">Scoring — Investissement</div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: center;">
+        <canvas id="radar_inline_investissement" height="280"></canvas>
+        <div>
+            <table style="width: 100%; font-family: Inter, sans-serif; font-size: 13px; border-collapse: collapse;">
+                <tr><td style="padding: 8px;">GPT-4o</td><td style="padding: 8px; text-align: center; background: #FFF8E7; font-weight: 600;">14.0/25</td></tr>
+                <tr><td style="padding: 8px;">Perplexity</td><td style="padding: 8px; text-align: center; background: #FFF8E7; font-weight: 600;">13.7/25</td></tr>
+                <tr><td style="padding: 8px;">Claude</td><td style="padding: 8px; text-align: center; background: #FFF8E7; font-weight: 600;">14.7/25</td></tr>
+            </table>
+        </div>
+    </div>
+</div>
+<script>
+new Chart(document.getElementById('radar_inline_investissement'), {
+  type: 'radar',
+  data: { labels: ["Pr\u00e9sence", "Position", "Exactitude", "Narratif", "Actionnabilit\u00e9"], datasets: [
+    { label: 'GPT-4o', data: [5.0, 4.0, 4.0, 3.0, 2.0], borderColor: '#4A90D9', backgroundColor: 'rgba(74,144,217,0.1)', pointRadius: 3, borderWidth: 2 },
+    { label: 'Perplexity', data: [5.0, 3.33, 3.33, 4.0, 2.0], borderColor: '#4A9D6E', backgroundColor: 'rgba(74,157,110,0.1)', pointRadius: 3, borderWidth: 2 },
+    { label: 'Claude', data: [5.0, 4.0, 4.0, 3.67, 2.0], borderColor: '#D4845A', backgroundColor: 'rgba(212,132,90,0.1)', pointRadius: 3, borderWidth: 2 }
+  ] },
+  options: { scales: { r: { beginAtZero: true, max: 5, ticks: { stepSize: 1, font: { size: 11 } }, pointLabels: { font: { size: 12, family: 'Inter' } } } }, plugins: { legend: { labels: { font: { size: 12, family: 'Inter' } } } } }
+});
+</script>
+
+
 
 <!-- ===== 6. SUBSTITUTION ===== -->
 
@@ -1221,6 +1329,33 @@ strong { font-weight: 600; }
     <span class="verdict verdict-concern">Alerte</span>
     <p>La question de substitution est celle ou Cartier a le plus a perdre. Les agents repondent volontiers — et orientent vers des marques qui n'ont rien a voir avec le positionnement Cartier. La cohabitation avec Swarovski ou Thomas Sabo, meme en "alternative abordable", dilue la perception de la maison. Perplexity limite la casse en restant sur l'horlogerie (Longines est un comparatif moins degradant que Pandora).</p>
 </div>
+
+<div style="background: white; padding: 32px; border-radius: 4px; border: 1px solid #E5DDD3; margin: 32px 0;">
+    <div style="font-family: Inter, sans-serif; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: #B8965A; margin-bottom: 8px;">Scoring — Substitution</div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: center;">
+        <canvas id="radar_inline_substitution" height="280"></canvas>
+        <div>
+            <table style="width: 100%; font-family: Inter, sans-serif; font-size: 13px; border-collapse: collapse;">
+                <tr><td style="padding: 8px;">GPT-4o</td><td style="padding: 8px; text-align: center; background: #FDECEA; font-weight: 600;">12.0/25</td></tr>
+                <tr><td style="padding: 8px;">Perplexity</td><td style="padding: 8px; text-align: center; background: #FFF8E7; font-weight: 600;">14.5/25</td></tr>
+                <tr><td style="padding: 8px;">Claude</td><td style="padding: 8px; text-align: center; background: #FFF8E7; font-weight: 600;">13.0/25</td></tr>
+            </table>
+        </div>
+    </div>
+</div>
+<script>
+new Chart(document.getElementById('radar_inline_substitution'), {
+  type: 'radar',
+  data: { labels: ["Pr\u00e9sence", "Position", "Exactitude", "Narratif", "Actionnabilit\u00e9"], datasets: [
+    { label: 'GPT-4o', data: [5.0, 2.0, 4.0, 3.0, 2.0], borderColor: '#4A90D9', backgroundColor: 'rgba(74,144,217,0.1)', pointRadius: 3, borderWidth: 2 },
+    { label: 'Perplexity', data: [5.0, 4.0, 4.0, 3.0, 2.5], borderColor: '#4A9D6E', backgroundColor: 'rgba(74,157,110,0.1)', pointRadius: 3, borderWidth: 2 },
+    { label: 'Claude', data: [5.0, 2.0, 4.0, 2.0, 4.0], borderColor: '#D4845A', backgroundColor: 'rgba(212,132,90,0.1)', pointRadius: 3, borderWidth: 2 }
+  ] },
+  options: { scales: { r: { beginAtZero: true, max: 5, ticks: { stepSize: 1, font: { size: 11 } }, pointLabels: { font: { size: 12, family: 'Inter' } } } }, plugins: { legend: { labels: { font: { size: 12, family: 'Inter' } } } } }
+});
+</script>
+
+
 
 <!-- ===== CONCLUSIONS ===== -->
 
@@ -1408,103 +1543,7 @@ strong { font-weight: 600; }
 
 
 
-<section id="dataviz" style="margin-top: 64px;">
-<h2 style="font-family: Inter, sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #8A6D5A; margin-bottom: 32px;">Data visualisation</h2>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<h3 style="font-family: Inter, sans-serif; font-size: 16px; font-weight: 600; color: #5C483B; margin: 48px 0 24px;">Performance par catégorie d'intention</h3>
-<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin: 32px 0;">
-<div style="background: white; padding: 24px; border-radius: 4px; border: 1px solid #E5DDD3;">
-<div style="font-family: Inter, sans-serif; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: #B8965A; margin-bottom: 16px;">Découverte</div>
-<canvas id="radar_decouverte" height="220"></canvas>
-</div>
-<div style="background: white; padding: 24px; border-radius: 4px; border: 1px solid #E5DDD3;">
-<div style="font-family: Inter, sans-serif; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: #B8965A; margin-bottom: 16px;">Comparaison</div>
-<canvas id="radar_comparaison" height="220"></canvas>
-</div>
-<div style="background: white; padding: 24px; border-radius: 4px; border: 1px solid #E5DDD3;">
-<div style="font-family: Inter, sans-serif; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: #B8965A; margin-bottom: 16px;">Validation</div>
-<canvas id="radar_validation" height="220"></canvas>
-</div>
-<div style="background: white; padding: 24px; border-radius: 4px; border: 1px solid #E5DDD3;">
-<div style="font-family: Inter, sans-serif; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: #B8965A; margin-bottom: 16px;">Parcours</div>
-<canvas id="radar_process" height="220"></canvas>
-</div>
-<div style="background: white; padding: 24px; border-radius: 4px; border: 1px solid #E5DDD3;">
-<div style="font-family: Inter, sans-serif; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: #B8965A; margin-bottom: 16px;">Investissement</div>
-<canvas id="radar_investissement" height="220"></canvas>
-</div>
-<div style="background: white; padding: 24px; border-radius: 4px; border: 1px solid #E5DDD3;">
-<div style="font-family: Inter, sans-serif; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: #B8965A; margin-bottom: 16px;">Substitution</div>
-<canvas id="radar_substitution" height="220"></canvas>
-</div>
-</div>
-<h3 style="font-family: Inter, sans-serif; font-size: 16px; font-weight: 600; color: #5C483B; margin: 64px 0 24px;">Heatmap récapitulative</h3>
-<table style="width: 100%; font-family: Inter, sans-serif; font-size: 14px; border-collapse: collapse;">
-<tr><th style="text-align: left; padding: 12px;">Catégorie</th><th style="text-align: center; padding: 12px; color: #4A90D9;">GPT-4o</th><th style="text-align: center; padding: 12px; color: #4A9D6E;">Perplexity</th><th style="text-align: center; padding: 12px; color: #D4845A;">Claude</th></tr>
-<tr><td style="padding: 12px; font-weight: 500;">Découverte</td><td style="text-align: center; padding: 12px; background: #FFF8E7; font-weight: 600;">14.7/25</td><td style="text-align: center; padding: 12px; background: #FDECEA; font-weight: 600;">11.3/25</td><td style="text-align: center; padding: 12px; background: #FFF8E7; font-weight: 600;">14.0/25</td></tr>
-<tr><td style="padding: 12px; font-weight: 500;">Comparaison</td><td style="text-align: center; padding: 12px; background: #FFF8E7; font-weight: 600;">15.7/25</td><td style="text-align: center; padding: 12px; background: #FFF8E7; font-weight: 600;">13.0/25</td><td style="text-align: center; padding: 12px; background: #FFF8E7; font-weight: 600;">15.0/25</td></tr>
-<tr><td style="padding: 12px; font-weight: 500;">Validation</td><td style="text-align: center; padding: 12px; background: #FFF8E7; font-weight: 600;">15.7/25</td><td style="text-align: center; padding: 12px; background: #FFF8E7; font-weight: 600;">15.7/25</td><td style="text-align: center; padding: 12px; background: #FFF8E7; font-weight: 600;">15.7/25</td></tr>
-<tr><td style="padding: 12px; font-weight: 500;">Parcours</td><td style="text-align: center; padding: 12px; background: #FFF8E7; font-weight: 600;">17.3/25</td><td style="text-align: center; padding: 12px; background: #FFF8E7; font-weight: 600;">16.0/25</td><td style="text-align: center; padding: 12px; background: #FFF8E7; font-weight: 600;">17.0/25</td></tr>
-<tr><td style="padding: 12px; font-weight: 500;">Investissement</td><td style="text-align: center; padding: 12px; background: #FFF8E7; font-weight: 600;">14.0/25</td><td style="text-align: center; padding: 12px; background: #FFF8E7; font-weight: 600;">13.7/25</td><td style="text-align: center; padding: 12px; background: #FFF8E7; font-weight: 600;">14.7/25</td></tr>
-<tr><td style="padding: 12px; font-weight: 500;">Substitution</td><td style="text-align: center; padding: 12px; background: #FDECEA; font-weight: 600;">12.0/25</td><td style="text-align: center; padding: 12px; background: #FFF8E7; font-weight: 600;">14.5/25</td><td style="text-align: center; padding: 12px; background: #FFF8E7; font-weight: 600;">13.0/25</td></tr>
-</table>
-<script>
-new Chart(document.getElementById('radar_decouverte'), {
-  type: 'radar',
-  data: { labels: ["Pr\u00e9sence", "Position", "Exactitude", "Narratif", "Actionnabilit\u00e9"], datasets: [
-    { label: 'GPT-4o', data: [5.0, 4.0, 5.0, 4.0, 0.67], borderColor: '#4A90D9', backgroundColor: 'rgba(74,144,217,0.1)', pointRadius: 3 },
-    { label: 'Perplexity', data: [3.35, 2.67, 4.33, 2.67, 1.0], borderColor: '#4A9D6E', backgroundColor: 'rgba(74,157,110,0.1)', pointRadius: 3 },
-    { label: 'Claude', data: [5.0, 4.0, 5.0, 4.0, 0.0], borderColor: '#D4845A', backgroundColor: 'rgba(212,132,90,0.1)', pointRadius: 3 }
-  ] },
-  options: { scales: { r: { beginAtZero: true, max: 5, ticks: { stepSize: 1, font: { size: 10 } }, pointLabels: { font: { size: 11 } } } }, plugins: { legend: { labels: { font: { size: 11, family: 'Inter' } } } } }
-});
-new Chart(document.getElementById('radar_comparaison'), {
-  type: 'radar',
-  data: { labels: ["Pr\u00e9sence", "Position", "Exactitude", "Narratif", "Actionnabilit\u00e9"], datasets: [
-    { label: 'GPT-4o', data: [5.0, 3.67, 4.67, 3.33, 3.0], borderColor: '#4A90D9', backgroundColor: 'rgba(74,144,217,0.1)', pointRadius: 3 },
-    { label: 'Perplexity', data: [3.35, 2.67, 4.0, 2.67, 3.0], borderColor: '#4A9D6E', backgroundColor: 'rgba(74,157,110,0.1)', pointRadius: 3 },
-    { label: 'Claude', data: [5.0, 3.33, 4.33, 3.33, 3.0], borderColor: '#D4845A', backgroundColor: 'rgba(212,132,90,0.1)', pointRadius: 3 }
-  ] },
-  options: { scales: { r: { beginAtZero: true, max: 5, ticks: { stepSize: 1, font: { size: 10 } }, pointLabels: { font: { size: 11 } } } }, plugins: { legend: { labels: { font: { size: 11, family: 'Inter' } } } } }
-});
-new Chart(document.getElementById('radar_validation'), {
-  type: 'radar',
-  data: { labels: ["Pr\u00e9sence", "Position", "Exactitude", "Narratif", "Actionnabilit\u00e9"], datasets: [
-    { label: 'GPT-4o', data: [5.0, 4.0, 4.67, 4.0, 2.0], borderColor: '#4A90D9', backgroundColor: 'rgba(74,144,217,0.1)', pointRadius: 3 },
-    { label: 'Perplexity', data: [5.0, 4.0, 4.0, 4.0, 2.67], borderColor: '#4A9D6E', backgroundColor: 'rgba(74,157,110,0.1)', pointRadius: 3 },
-    { label: 'Claude', data: [5.0, 4.0, 4.33, 3.67, 2.67], borderColor: '#D4845A', backgroundColor: 'rgba(212,132,90,0.1)', pointRadius: 3 }
-  ] },
-  options: { scales: { r: { beginAtZero: true, max: 5, ticks: { stepSize: 1, font: { size: 10 } }, pointLabels: { font: { size: 11 } } } }, plugins: { legend: { labels: { font: { size: 11, family: 'Inter' } } } } }
-});
-new Chart(document.getElementById('radar_process'), {
-  type: 'radar',
-  data: { labels: ["Pr\u00e9sence", "Position", "Exactitude", "Narratif", "Actionnabilit\u00e9"], datasets: [
-    { label: 'GPT-4o', data: [5.0, 4.0, 5.0, 3.67, 3.67], borderColor: '#4A90D9', backgroundColor: 'rgba(74,144,217,0.1)', pointRadius: 3 },
-    { label: 'Perplexity', data: [5.0, 4.0, 4.0, 3.33, 3.67], borderColor: '#4A9D6E', backgroundColor: 'rgba(74,157,110,0.1)', pointRadius: 3 },
-    { label: 'Claude', data: [5.0, 4.0, 4.33, 3.67, 4.0], borderColor: '#D4845A', backgroundColor: 'rgba(212,132,90,0.1)', pointRadius: 3 }
-  ] },
-  options: { scales: { r: { beginAtZero: true, max: 5, ticks: { stepSize: 1, font: { size: 10 } }, pointLabels: { font: { size: 11 } } } }, plugins: { legend: { labels: { font: { size: 11, family: 'Inter' } } } } }
-});
-new Chart(document.getElementById('radar_investissement'), {
-  type: 'radar',
-  data: { labels: ["Pr\u00e9sence", "Position", "Exactitude", "Narratif", "Actionnabilit\u00e9"], datasets: [
-    { label: 'GPT-4o', data: [5.0, 4.0, 4.0, 3.0, 2.0], borderColor: '#4A90D9', backgroundColor: 'rgba(74,144,217,0.1)', pointRadius: 3 },
-    { label: 'Perplexity', data: [5.0, 3.33, 3.33, 4.0, 2.0], borderColor: '#4A9D6E', backgroundColor: 'rgba(74,157,110,0.1)', pointRadius: 3 },
-    { label: 'Claude', data: [5.0, 4.0, 4.0, 3.67, 2.0], borderColor: '#D4845A', backgroundColor: 'rgba(212,132,90,0.1)', pointRadius: 3 }
-  ] },
-  options: { scales: { r: { beginAtZero: true, max: 5, ticks: { stepSize: 1, font: { size: 10 } }, pointLabels: { font: { size: 11 } } } }, plugins: { legend: { labels: { font: { size: 11, family: 'Inter' } } } } }
-});
-new Chart(document.getElementById('radar_substitution'), {
-  type: 'radar',
-  data: { labels: ["Pr\u00e9sence", "Position", "Exactitude", "Narratif", "Actionnabilit\u00e9"], datasets: [
-    { label: 'GPT-4o', data: [5.0, 2.0, 4.0, 3.0, 2.0], borderColor: '#4A90D9', backgroundColor: 'rgba(74,144,217,0.1)', pointRadius: 3 },
-    { label: 'Perplexity', data: [5.0, 4.0, 4.0, 3.0, 2.5], borderColor: '#4A9D6E', backgroundColor: 'rgba(74,157,110,0.1)', pointRadius: 3 },
-    { label: 'Claude', data: [5.0, 2.0, 4.0, 2.0, 4.0], borderColor: '#D4845A', backgroundColor: 'rgba(212,132,90,0.1)', pointRadius: 3 }
-  ] },
-  options: { scales: { r: { beginAtZero: true, max: 5, ticks: { stepSize: 1, font: { size: 10 } }, pointLabels: { font: { size: 11 } } } }, plugins: { legend: { labels: { font: { size: 11, family: 'Inter' } } } } }
-});
-</script>
-</section>
+
 
 <section id="annexes" style="margin-top: 96px;">
 <h1 class="part-title">Annexes</h1>
