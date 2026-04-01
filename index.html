@@ -3,318 +3,724 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Benchmark Cartier — Visibilité dans les agents IA</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Benchmark Cartier — Visibilite dans les agents IA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --bg: #FAF8F5;
-            --bg-alt: #F0EEE9;
-            --text: #1A1A1A;
-            --text-secondary: #6B6B6B;
-            --accent: #8A6D5A;
-            --accent-dark: #5C483B;
-            --border: #E5DDD3;
-            --green: #3D7A4A;
-            --amber: #B8860B;
-            --red: #A0522D;
-        }
+:root {
+    --bg: #FAF8F5;
+    --bg-alt: #F0EEE9;
+    --text: #1A1A1A;
+    --text-secondary: #6B6B6B;
+    --text-light: #999;
+    --accent: #8A6D5A;
+    --accent-dark: #5C483B;
+    --border: #E5DDD3;
+    --deep-blue: #2C3E50;
+    --gold: #B8965A;
+    --green: #3D7A4A;
+    --amber: #B8860B;
+    --red: #A0522D;
+}
 
-        * { box-sizing: border-box; }
+/* ===== KINFOLK EDITORIAL LAYOUT ===== */
 
-        body {
-            font-family: 'Cormorant Garamond', Georgia, serif;
-            font-size: 19px;
-            line-height: 1.75;
-            color: var(--text);
-            background: var(--bg);
-            margin: 0;
-        }
+.breath-img {
+    margin: 64px -120px;
+    overflow: hidden;
+}
+.breath-img img {
+    display: block;
+    width: 100%;
+    height: auto;
+    filter: grayscale(15%) contrast(1.05);
+}
 
-        main {
-            max-width: 820px;
-            margin: 0 auto;
-            padding: 60px 40px 80px;
-        }
+.img-bleed-right {
+    margin: 48px -120px 48px 30%;
+    overflow: hidden;
+}
+.img-bleed-right img {
+    width: 100%;
+    height: auto;
+    filter: grayscale(15%) contrast(1.05);
+}
 
-        h1 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 38px;
-            font-weight: 300;
-            margin-bottom: 8px;
-            line-height: 1.2;
-        }
+.img-bleed-left {
+    margin: 48px 30% 48px -120px;
+    overflow: hidden;
+}
+.img-bleed-left img {
+    width: 100%;
+    height: auto;
+    filter: grayscale(15%) contrast(1.05);
+}
 
-        h2 {
-            font-family: 'Inter', sans-serif;
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
-            color: var(--accent);
-            margin: 56px 0 20px;
-            font-weight: 600;
-            padding-bottom: 8px;
-            border-bottom: 1px solid var(--border);
-        }
+.img-small-right {
+    float: right;
+    width: 200px;
+    margin: 8px -80px 24px 32px;
+}
+.img-small-right img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    filter: grayscale(15%) contrast(1.05);
+}
 
-        h3 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 24px;
-            font-weight: 500;
-            margin: 36px 0 12px;
-            color: var(--accent-dark);
-        }
+.two-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    margin: 48px 0;
+}
+.two-columns > * {
+    padding: 0 32px;
+}
+.two-columns > *:first-child {
+    border-right: 1px solid var(--border);
+    padding-left: 0;
+}
+.two-columns > *:last-child {
+    padding-right: 0;
+}
+.three-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 32px;
+    margin: 48px 0;
+}
+.three-columns p {
+    font-size: 18px;
+    line-height: 1.7;
+}
 
-        h4 {
-            font-family: 'Inter', sans-serif;
-            font-size: 13px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            color: var(--accent);
-            margin: 24px 0 8px;
-        }
+.stat-hero {
+    text-align: center;
+    padding: 56px 40px;
+    margin: 48px -48px;
+    background: var(--bg-alt);
+}
+.stat-hero .number {
+    font-family: 'Inter', sans-serif;
+    font-size: 72px;
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 12px;
+}
+.stat-hero .label {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--text-secondary);
+    letter-spacing: 0.05em;
+}
+.stat-hero .source-note {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    color: var(--text-light);
+    margin-top: 8px;
+}
 
-        p { margin-bottom: 18px; }
+.section-break {
+    text-align: center;
+    padding: 40px 0;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    color: var(--accent);
+}
 
-        .subtitle {
-            font-family: 'Inter', sans-serif;
-            font-size: 14px;
-            color: var(--text-secondary);
-            margin-bottom: 6px;
-        }
+.aside-box {
+    background: var(--bg-alt);
+    padding: 32px;
+    border-radius: 4px;
+    margin: 32px -80px 32px 60%;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--text-secondary);
+}
 
-        .author {
-            font-family: 'Inter', sans-serif;
-            font-size: 13px;
-            color: var(--text-secondary);
-            margin-bottom: 40px;
-        }
+.pull-quote-left {
+    font-family: 'Inter', sans-serif;
+    font-size: 19px;
+    font-weight: 300;
+    color: var(--accent-dark);
+    margin: 40px 40% 40px -40px;
+    padding-left: 24px;
+    border-left: 2px solid var(--accent);
+    line-height: 1.5;
+}
 
-        hr { border: none; border-top: 1px solid var(--border); margin: 48px 0; }
+/* ===== REPERES DE LECTURE ===== */
 
-        a { color: var(--accent-dark); text-decoration: underline; text-underline-offset: 3px; }
-        a:hover { color: var(--accent); }
+.drop-cap::first-letter {
+    float: left;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 72px;
+    font-weight: 300;
+    line-height: 0.8;
+    padding-right: 12px;
+    padding-top: 4px;
+    color: var(--accent-dark);
+}
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 24px 0;
-            font-size: 15px;
-            font-family: 'Inter', sans-serif;
-        }
+.key-insight {
+    border-left: 4px solid var(--gold);
+    background: linear-gradient(to right, #FFF8E7, var(--bg));
+    padding: 20px 28px;
+    margin: 36px 0;
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.6;
+    color: var(--text);
+}
+.key-insight::before {
+    content: "A retenir";
+    display: block;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: 8px;
+}
 
-        th {
-            background: var(--bg-alt);
-            padding: 10px 14px;
-            text-align: left;
-            font-weight: 600;
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            color: var(--accent);
-            border-bottom: 2px solid var(--border);
-        }
+.highlight {
+    background: linear-gradient(to bottom, transparent 60%, rgba(184, 150, 90, 0.2) 60%);
+    padding: 0 2px;
+}
 
-        td {
-            padding: 10px 14px;
-            border-bottom: 1px solid var(--border);
-            vertical-align: top;
-            line-height: 1.5;
-        }
+.data-card {
+    display: inline-block;
+    background: var(--bg-alt);
+    border: 1px solid var(--border);
+    padding: 12px 20px;
+    margin: 8px 8px 8px 0;
+    border-radius: 4px;
+    text-align: center;
+}
+.data-card .dc-number {
+    font-family: 'Inter', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--deep-blue);
+    line-height: 1;
+}
+.data-card .dc-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-secondary);
+    margin-top: 4px;
+}
 
-        tr:last-child td { border-bottom: none; }
+.moment-label {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--gold);
+    margin-top: 40px;
+    margin-bottom: 4px;
+}
+.moment-title {
+    display: block;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 24px;
+    font-weight: 400;
+    color: var(--text);
+    margin-bottom: 16px;
+}
 
-        blockquote {
-            border-left: 3px solid var(--accent);
-            padding: 12px 20px;
-            margin: 20px 0;
-            color: var(--text-secondary);
-            font-style: italic;
-            background: var(--bg-alt);
-            border-radius: 0 4px 4px 0;
-            font-size: 17px;
-            line-height: 1.6;
-        }
+.part-title {
+    position: relative;
+    padding-top: 16px;
+}
+.part-title::before {
+    content: "";
+    display: block;
+    width: 48px;
+    height: 3px;
+    background: var(--gold);
+    margin-bottom: 24px;
+}
 
-        blockquote .platform-label {
-            font-family: 'Inter', sans-serif;
-            font-size: 11px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            color: var(--accent);
-            display: block;
-            margin-bottom: 6px;
-            font-style: normal;
-        }
+.data-highlight {
+    font-family: 'Inter', sans-serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--gold);
+    display: block;
+    margin: 8px 0;
+}
 
-        ul { margin-bottom: 18px; padding-left: 24px; }
-        li { margin-bottom: 8px; }
-        strong { font-weight: 600; }
+.methodology-box {
+    background: var(--deep-blue);
+    color: #F0F4F8;
+    padding: 32px 36px;
+    border-radius: 4px;
+    margin: 40px 0;
+}
+.methodology-box h3,
+.methodology-box .method-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--gold);
+    margin-bottom: 16px;
+}
+.methodology-box p, .methodology-box li {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    line-height: 1.7;
+    color: #D0D8E0;
+}
+.methodology-box h4 {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--gold);
+    margin: 24px 0 8px;
+}
+.methodology-box table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0 8px;
+    font-size: 14px;
+    font-family: 'Inter', sans-serif;
+}
+.methodology-box th {
+    background: rgba(255,255,255,0.08);
+    padding: 8px 12px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--gold);
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+}
+.methodology-box td {
+    padding: 8px 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    color: #D0D8E0;
+    line-height: 1.5;
+}
+.methodology-box ul {
+    margin-bottom: 16px;
+    padding-left: 20px;
+}
+.methodology-box strong {
+    color: #fff;
+}
 
-        .question-box {
-            background: var(--accent-dark);
-            color: #fff;
-            padding: 14px 20px;
-            border-radius: 6px;
-            font-family: 'Inter', sans-serif;
-            font-size: 15px;
-            font-weight: 400;
-            margin: 28px 0 16px;
-            line-height: 1.4;
-        }
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
-        .question-box .q-label {
-            font-size: 11px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            opacity: 0.7;
-            display: block;
-            margin-bottom: 4px;
-        }
+html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+}
 
-        .analysis-box {
-            background: #fff;
-            border: 1px solid var(--border);
-            border-radius: 6px;
-            padding: 20px 24px;
-            margin: 20px 0 32px;
-        }
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 19px;
+    line-height: 1.75;
+}
 
-        .analysis-box h4 {
-            margin-top: 0;
-            color: var(--accent-dark);
-        }
+/* Progress bar */
+.progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background: var(--accent);
+    z-index: 1000;
+    transition: width 0.1s;
+}
 
-        .verdict {
-            font-family: 'Inter', sans-serif;
-            font-size: 13px;
-            font-weight: 500;
-            display: inline-block;
-            padding: 3px 10px;
-            border-radius: 3px;
-            margin-right: 8px;
-        }
+/* Sidebar TOC */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 240px;
+    height: 100vh;
+    background: var(--bg-alt);
+    border-right: 1px solid var(--border);
+    padding: 32px 20px;
+    overflow-y: auto;
+    z-index: 900;
+    font-family: 'Inter', sans-serif;
+}
+.sidebar-title {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+.sidebar a {
+    display: block;
+    font-size: 12px;
+    color: var(--text-secondary);
+    text-decoration: none;
+    padding: 5px 0;
+    line-height: 1.5;
+    transition: color 0.2s;
+}
+.sidebar a:hover { color: var(--accent-dark); }
+.sidebar a.active { color: var(--accent); font-weight: 500; }
+.sidebar a.section { font-weight: 500; color: var(--text); margin-top: 12px; }
+.sidebar a.sub { padding-left: 12px; font-size: 11px; }
+.sidebar .progress-text {
+    font-size: 10px;
+    color: var(--text-light);
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+}
 
-        .verdict-good { background: #e8f5e9; color: var(--green); }
-        .verdict-mixed { background: #fff8e1; color: var(--amber); }
-        .verdict-concern { background: #fbe9e7; color: var(--red); }
+/* Container offset for sidebar */
+main {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 60px 40px 80px;
+    margin-left: 260px;
+}
 
-        .exec-summary {
-            background: var(--bg-alt);
-            padding: 28px 32px;
-            border-radius: 8px;
-            margin: 24px 0 40px;
-        }
+@media (max-width: 1100px) {
+    .sidebar { display: none; }
+    main { margin-left: auto; }
+    .breath-img, .img-bleed-right, .img-bleed-left { margin-left: -40px; margin-right: -40px; }
+    .img-small-right { margin-right: -20px; }
+    .two-columns, .three-columns { grid-template-columns: 1fr; gap: 24px; }
+    .aside-box { margin: 32px 0; }
+    .stat-hero { margin: 32px -24px; }
+    .pull-quote-left { margin: 32px 0; }
+}
 
-        .exec-summary ul { margin-bottom: 0; }
-        .exec-summary li { margin-bottom: 10px; font-size: 18px; }
+@media (max-width: 768px) {
+    main { padding: 40px 24px; margin-left: auto; }
+}
 
-        .methodology-box {
-            background: #fff;
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 28px 32px;
-            margin: 24px 0 40px;
-        }
+/* ===== REPORT-SPECIFIC ===== */
 
-        .methodology-box h4 { margin-top: 0; }
+h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 38px;
+    font-weight: 300;
+    margin-bottom: 8px;
+    line-height: 1.2;
+}
 
-        .methodology-box table {
-            margin: 16px 0 8px;
-        }
+h2 {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    margin: 56px 0 20px;
+    font-weight: 600;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+}
 
-        .reco-card {
-            background: #fff;
-            border: 1px solid var(--border);
-            border-left: 4px solid var(--accent);
-            padding: 20px 24px;
-            margin: 16px 0;
-            border-radius: 0 6px 6px 0;
-        }
+h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    font-weight: 500;
+    margin: 36px 0 12px;
+    color: var(--accent-dark);
+}
 
-        .reco-card h4 { margin-top: 0; }
+h4 {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--accent);
+    margin: 24px 0 8px;
+}
 
-        .reco-card .how-to {
-            margin-top: 16px;
-            padding-top: 16px;
-            border-top: 1px dashed var(--border);
-        }
+p { margin-bottom: 18px; }
 
-        .reco-card .how-to h5 {
-            font-family: 'Inter', sans-serif;
-            font-size: 12px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            color: var(--accent);
-            margin: 0 0 10px;
-        }
+.subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-bottom: 6px;
+}
 
-        .reco-card .how-to ul {
-            margin: 0;
-            padding-left: 20px;
-        }
+.author {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin-bottom: 40px;
+}
 
-        .reco-card .how-to li {
-            font-family: 'Inter', sans-serif;
-            font-size: 14px;
-            line-height: 1.6;
-            color: var(--text-secondary);
-            margin-bottom: 8px;
-        }
+hr { border: none; border-top: 1px solid var(--border); margin: 48px 0; }
 
-        .reco-card .how-to li strong {
-            color: var(--text);
-        }
+a { color: var(--accent-dark); text-decoration: underline; text-underline-offset: 3px; }
+a:hover { color: var(--accent); }
 
-        .footer-note {
-            font-family: 'Inter', sans-serif;
-            font-size: 12px;
-            color: var(--text-secondary);
-            margin-top: 60px;
-            padding-top: 20px;
-            border-top: 1px solid var(--border);
-        }
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 24px 0;
+    font-size: 15px;
+    font-family: 'Inter', sans-serif;
+}
 
-        @media (max-width: 600px) {
-            main { padding: 30px 20px; }
-            h1 { font-size: 28px; }
-            table { font-size: 13px; }
-            th, td { padding: 8px 10px; }
-        }
+th {
+    background: var(--bg-alt);
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--accent);
+    border-bottom: 2px solid var(--border);
+}
 
-        @media print {
-            body { font-size: 16px; }
-            main { max-width: none; padding: 20px; }
-            .question-box { background: #333; }
-        }
+td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+    line-height: 1.5;
+}
+
+tr:last-child td { border-bottom: none; }
+
+blockquote {
+    border-left: 3px solid var(--accent);
+    padding: 12px 20px;
+    margin: 20px 0;
+    color: var(--text-secondary);
+    font-style: italic;
+    background: var(--bg-alt);
+    border-radius: 0 4px 4px 0;
+    font-size: 17px;
+    line-height: 1.6;
+}
+
+blockquote .platform-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    display: block;
+    margin-bottom: 6px;
+    font-style: normal;
+}
+
+ul { margin-bottom: 18px; padding-left: 24px; }
+li { margin-bottom: 8px; }
+strong { font-weight: 600; }
+
+.question-box {
+    background: var(--accent-dark);
+    color: #fff;
+    padding: 14px 20px;
+    border-radius: 6px;
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    margin: 28px 0 16px;
+    line-height: 1.4;
+}
+
+.question-box .q-label {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    opacity: 0.7;
+    display: block;
+    margin-bottom: 4px;
+}
+
+.analysis-box {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 20px 24px;
+    margin: 20px 0 32px;
+}
+
+.analysis-box h4 {
+    margin-top: 0;
+    color: var(--accent-dark);
+}
+
+.verdict {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 3px;
+    margin-right: 8px;
+}
+
+.verdict-good { background: #e8f5e9; color: var(--green); }
+.verdict-mixed { background: #fff8e1; color: var(--amber); }
+.verdict-concern { background: #fbe9e7; color: var(--red); }
+
+.exec-summary {
+    background: var(--bg-alt);
+    padding: 28px 32px;
+    border-radius: 8px;
+    margin: 24px 0 40px;
+}
+
+.exec-summary ul { margin-bottom: 0; }
+.exec-summary li { margin-bottom: 10px; font-size: 18px; }
+
+.reco-card {
+    border-left: 4px solid var(--gold);
+    background: linear-gradient(to right, #FFF8E7, var(--bg));
+    padding: 20px 28px;
+    margin: 36px 0;
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.6;
+    color: var(--text);
+    border-radius: 0 6px 6px 0;
+}
+
+.reco-card h4 { margin-top: 0; color: var(--accent-dark); }
+
+.reco-card p {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 19px;
+    line-height: 1.75;
+}
+
+.reco-card .how-to {
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px dashed var(--border);
+}
+
+.reco-card .how-to h5 {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    margin: 0 0 10px;
+}
+
+.reco-card .how-to ul {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.reco-card .how-to li {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+}
+
+.reco-card .how-to li strong {
+    color: var(--text);
+}
+
+.footer-note {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    color: var(--text-secondary);
+    margin-top: 60px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+}
+
+@media (max-width: 600px) {
+    main { padding: 30px 20px; }
+    h1 { font-size: 28px; }
+    table { font-size: 13px; }
+    th, td { padding: 8px 10px; }
+}
+
+@media print {
+    body { font-size: 16px; }
+    main { max-width: none; padding: 20px; margin-left: 0; }
+    .sidebar, .progress-bar { display: none; }
+    .question-box { background: #333; }
+}
     </style>
 </head>
 <body>
+
+<div class="progress-bar" id="progressBar"></div>
+
+<nav class="sidebar">
+    <div class="sidebar-title">Benchmark Cartier</div>
+    <a href="#methodologie" class="section">Methodologie</a>
+    <a href="#synthese" class="section">Synthese</a>
+    <a href="#decouverte" class="section">1. Decouverte</a>
+    <a href="#comparaison" class="section">2. Comparaison</a>
+    <a href="#validation" class="section">3. Validation</a>
+    <a href="#process" class="section">4. Achat (Process)</a>
+    <a href="#investissement" class="section">5. Investissement</a>
+    <a href="#substitution" class="section">6. Substitution</a>
+    <a href="#conclusions" class="section">Conclusions</a>
+    <a href="#reco" class="sub">Recommandations</a>
+    <a href="annexe.html" class="section" target="_blank" rel="noopener">Annexe</a>
+    <div class="progress-text" id="progressText">0 % lu</div>
+</nav>
+
 <main>
 
 <h1>Benchmark Cartier</h1>
-<p class="subtitle">Visibilité dans les agents IA — Mars 2026</p>
-<p class="author">Mickaël Tsakiris — Document informatif</p>
+<p class="subtitle">Visibilite dans les agents IA — Mars 2026</p>
+<p class="author">Mickael Tsakiris — Document informatif</p>
 
 <hr>
 
-<!-- ===== MÉTHODOLOGIE ===== -->
+<!-- ===== METHODOLOGIE ===== -->
 
-<h2>Méthodologie</h2>
+<h2 id="methodologie">Methodologie</h2>
 
 <div class="methodology-box">
     <h4>Objet du test</h4>
-    <p style="margin-top:0;">Évaluation de la visibilité de Cartier dans les réponses générées par trois plateformes d'IA générative majeures, en simulant le parcours d'un consommateur réel qui interroge un agent IA sur la joaillerie de luxe.</p>
+    <p style="margin-top:0;">Evaluation de la visibilite de Cartier dans les reponses generees par trois plateformes d'IA generative majeures, en simulant le parcours d'un consommateur reel qui interroge un agent IA sur la joaillerie de luxe.</p>
 
-    <h4>Plateformes testées</h4>
+    <h4>Plateformes testees</h4>
     <table>
         <tr>
             <th>Plateforme</th>
-            <th>Modèle</th>
-            <th>Accès web temps réel</th>
+            <th>Modele</th>
+            <th>Acces web temps reel</th>
         </tr>
         <tr>
             <td>ChatGPT</td>
@@ -324,7 +730,7 @@
         <tr>
             <td>Perplexity</td>
             <td>Sonar</td>
-            <td>Oui (sources web indexées)</td>
+            <td>Oui (sources web indexees)</td>
         </tr>
         <tr>
             <td>Claude</td>
@@ -334,40 +740,40 @@
     </table>
 
     <h4>Date du test</h4>
-    <p>31 mars 2026. Les résultats reflètent l'état des modèles à cette date. Les agents IA évoluent rapidement : une même question posée dans six mois pourra produire des réponses différentes.</p>
+    <p>31 mars 2026. Les resultats refletent l'etat des modeles a cette date. Les agents IA evoluent rapidement : une meme question posee dans six mois pourra produire des reponses differentes.</p>
 
-    <h4>Corpus de requêtes</h4>
-    <p><strong>17 requêtes</strong> en français, rédigées dans un registre conversationnel naturel (tutoiement, abréviations, formulations du quotidien), réparties en <strong>6 catégories d'intention</strong> :</p>
+    <h4>Corpus de requetes</h4>
+    <p><strong>17 requetes</strong> en francais, redigees dans un registre conversationnel naturel (tutoiement, abreviations, formulations du quotidien), reparties en <strong>6 categories d'intention</strong> :</p>
     <ul>
-        <li><strong>Découverte</strong> (3 requêtes) — l'utilisateur explore la joaillerie de luxe</li>
-        <li><strong>Comparaison</strong> (3 requêtes) — Cartier face à la concurrence directe</li>
-        <li><strong>Validation</strong> (3 requêtes) — l'acheteur hésite, cherche à se rassurer</li>
-        <li><strong>Parcours d'achat</strong> (3 requêtes) — comment acheter, prix, authenticité</li>
-        <li><strong>Investissement</strong> (2 requêtes) — dimension patrimoniale</li>
-        <li><strong>Substitution</strong> (3 requêtes) — alternatives et marques concurrentes</li>
+        <li><strong>Decouverte</strong> (3 requetes) — l'utilisateur explore la joaillerie de luxe</li>
+        <li><strong>Comparaison</strong> (3 requetes) — Cartier face a la concurrence directe</li>
+        <li><strong>Validation</strong> (3 requetes) — l'acheteur hesite, cherche a se rassurer</li>
+        <li><strong>Parcours d'achat</strong> (3 requetes) — comment acheter, prix, authenticite</li>
+        <li><strong>Investissement</strong> (2 requetes) — dimension patrimoniale</li>
+        <li><strong>Substitution</strong> (3 requetes) — alternatives et marques concurrentes</li>
     </ul>
 
-    <h4>Source des requêtes</h4>
-    <p>Les requêtes ont été construites à partir de données de recherche réelles pour refléter les intentions authentiques des consommateurs :</p>
+    <h4>Source des requetes</h4>
+    <p>Les requetes ont ete construites a partir de donnees de recherche reelles pour refleter les intentions authentiques des consommateurs :</p>
     <ul>
         <li><strong>Google Trends / Ahrefs</strong> : "Cartier Love bracelet" = 353 840 recherches/mois (volume mondial)</li>
-        <li><strong>Chrono24</strong> : données de marché secondaire sur l'horlogerie et la joaillerie Cartier</li>
-        <li><strong>PurseForum</strong> : fils de discussion consommateurs sur les achats Cartier, comparaisons, retours d'expérience</li>
+        <li><strong>Chrono24</strong> : donnees de marche secondaire sur l'horlogerie et la joaillerie Cartier</li>
+        <li><strong>PurseForum</strong> : fils de discussion consommateurs sur les achats Cartier, comparaisons, retours d'experience</li>
     </ul>
 
-    <h4>Grille d'évaluation</h4>
-    <p>Chaque réponse a été évaluée sur six critères :</p>
+    <h4>Grille d'evaluation</h4>
+    <p>Chaque reponse a ete evaluee sur six criteres :</p>
     <ul>
-        <li><strong>Présence</strong> — Cartier est-elle citée ? En quelle position ?</li>
+        <li><strong>Presence</strong> — Cartier est-elle citee ? En quelle position ?</li>
         <li><strong>Position</strong> — rang dans la liste de recommandations (1re, 2e, 3e...)</li>
         <li><strong>Exactitude</strong> — les faits sont-ils corrects ? (dates, prix, attributions)</li>
-        <li><strong>Préservation du récit</strong> — le positionnement de la maison est-il respecté ?</li>
-        <li><strong>Actionnabilité</strong> — la réponse permet-elle de passer à l'achat ?</li>
-        <li><strong>Sentiment</strong> — la tonalité est-elle favorable, neutre ou défavorable ?</li>
+        <li><strong>Preservation du recit</strong> — le positionnement de la maison est-il respecte ?</li>
+        <li><strong>Actionnabilite</strong> — la reponse permet-elle de passer a l'achat ?</li>
+        <li><strong>Sentiment</strong> — la tonalite est-elle favorable, neutre ou defavorable ?</li>
     </ul>
 
-    <h4>Références méthodologiques</h4>
-    <p>Ce protocole s'appuie sur les travaux récents en GEO (Generative Engine Optimization) :</p>
+    <h4>References methodologiques</h4>
+    <p>Ce protocole s'appuie sur les travaux recents en GEO (Generative Engine Optimization) :</p>
     <ul>
         <li>Incremys, <em>GEO: Generative Engine Optimization Framework</em>, 2026</li>
         <li>ConvertMate, <em>Brand Visibility in AI-Generated Responses</em>, 2026</li>
@@ -379,26 +785,27 @@
 
 <!-- ===== EXECUTIVE SUMMARY ===== -->
 
-<h2>Synthèse</h2>
+<h2 id="synthese">Synthese</h2>
 
 <div class="exec-summary">
-<p style="margin-top:0;">Ce benchmark analyse comment trois agents IA majeurs (ChatGPT, Perplexity, Claude) parlent de Cartier lorsqu'un utilisateur pose des questions sur la joaillerie de luxe. 17 requêtes testées, 6 catégories d'intention. Voici ce qui en ressort.</p>
+<p style="margin-top:0;">Ce benchmark analyse comment trois agents IA majeurs (ChatGPT, Perplexity, Claude) parlent de Cartier lorsqu'un utilisateur pose des questions sur la joaillerie de luxe. 17 requetes testees, 6 categories d'intention. Voici ce qui en ressort.</p>
 <ul>
-<li><strong>Cartier est systématiquement citée en premier</strong> par les trois plateformes dans la catégorie découverte. La notoriété de la maison est incontestable dans les réponses générées par l'IA.</li>
-<li><strong>Le bracelet Love cannibalise la visibilité</strong> : il apparaît dans quasiment chaque réponse, parfois au détriment des collections haute joaillerie, de la Panthère ou même de l'horlogerie.</li>
-<li><strong>Les agents orientent vers la seconde main</strong> : Vestiaire Collective, The RealReal et Collector Square sont cités comme canaux d'achat alternatifs. C'est un signal fort pour le contrôle de la distribution.</li>
-<li><strong>Perplexity est le plus précis sur les prix</strong> (hausses 2025 détaillées, +3,8 % sur le Love fin en or jaune). ChatGPT et Claude donnent des fourchettes approximatives ou avouent ne pas savoir.</li>
-<li><strong>Sur l'éthique, Perplexity est sévère</strong> : réponse nette ("non, Cartier n'est pas considérée comme une marque pleinement éthique"). ChatGPT et Claude sont plus nuancés mais le sujet est systématiquement soulevé.</li>
-<li><strong>L'actionnabilité est faible</strong> : aucun agent ne permet de prendre rendez-vous, de localiser une boutique avec horaires, ou de consulter un stock. Le parcours s'arrête à "rendez-vous sur cartier.com".</li>
+<li><strong>Cartier est systematiquement citee en premier</strong> par les trois plateformes dans la categorie decouverte. La notoriete de la maison est incontestable dans les reponses generees par l'IA.</li>
+<li><strong>Le bracelet Love cannibalise la visibilite</strong> : il apparait dans quasiment chaque reponse, parfois au detriment des collections haute joaillerie, de la Panthere ou meme de l'horlogerie.</li>
+<li><strong>Les agents orientent vers la seconde main</strong> : Vestiaire Collective, The RealReal et Collector Square sont cites comme canaux d'achat alternatifs. C'est un signal fort pour le controle de la distribution.</li>
+<li><strong>Perplexity est le plus precis sur les prix</strong> (hausses 2025 detaillees, +3,8 % sur le Love fin en or jaune). ChatGPT et Claude donnent des fourchettes approximatives ou avouent ne pas savoir.</li>
+<li><strong>Sur l'ethique, Perplexity est severe</strong> : reponse nette ("non, Cartier n'est pas consideree comme une marque pleinement ethique"). ChatGPT et Claude sont plus nuances mais le sujet est systematiquement souleve.</li>
+<li><strong>L'actionnabilite est faible</strong> : aucun agent ne permet de prendre rendez-vous, de localiser une boutique avec horaires, ou de consulter un stock. Le parcours s'arrete a "rendez-vous sur cartier.com".</li>
 </ul>
 </div>
 
 <hr>
 
-<!-- ===== 1. DÉCOUVERTE ===== -->
+<!-- ===== 1. DECOUVERTE ===== -->
 
-<h2>1. Découverte</h2>
-<p>Comment les agents IA présentent-ils Cartier quand un utilisateur découvre la joaillerie de luxe ?</p>
+<span class="moment-label">Premier moment</span>
+<span class="moment-title" id="decouverte">Decouverte</span>
+<p>Comment les agents IA presentent-ils Cartier quand un utilisateur decouvre la joaillerie de luxe ?</p>
 
 <div class="question-box">
     <span class="q-label">Question 1</span>
@@ -407,93 +814,94 @@
 
 <blockquote>
     <span class="platform-label">ChatGPT (GPT-4o)</span>
-    Cite Cartier en premier, suivi de Tiffany, Bvlgari, Van Cleef, Harry Winston, Chopard et Graff. Présente Cartier comme "fondée en 1847 à Paris, célèbre pour le bracelet Love et la montre Tank".
+    Cite Cartier en premier, suivi de Tiffany, Bvlgari, Van Cleef, Harry Winston, Chopard et Graff. Presente Cartier comme "fondee en 1847 a Paris, celebre pour le bracelet Love et la montre Tank".
 </blockquote>
 
 <blockquote>
     <span class="platform-label">Perplexity</span>
-    Place Cartier en tête avec l'angle Place Vendôme : "surnommé le joaillier des rois, célèbre pour son élégance classique et des icônes comme la bague Panthère". Cite Van Cleef, Boucheron, Chaumet dans le même souffle.
+    Place Cartier en tete avec l'angle Place Vendome : "surnomme le joaillier des rois, celebre pour son elegance classique et des icones comme la bague Panthere". Cite Van Cleef, Boucheron, Chaumet dans le meme souffle.
 </blockquote>
 
 <blockquote>
     <span class="platform-label">Claude</span>
-    Organise par géographie : "maisons historiques françaises" (Cartier en tête, Van Cleef, Boucheron, Chaumet) puis "références internationales" (Tiffany, Harry Winston, Bvlgari, Chopard).
+    Organise par geographie : "maisons historiques francaises" (Cartier en tete, Van Cleef, Boucheron, Chaumet) puis "references internationales" (Tiffany, Harry Winston, Bvlgari, Chopard).
 </blockquote>
 
 <div class="analysis-box">
     <h4>Analyse</h4>
     <span class="verdict verdict-good">Positif</span>
-    <p>Cartier arrive en position 1 sur les trois plateformes. La notoriété digitale est sans faille. Les descriptifs reprennent les bons codes : héritage ("1847"), royauté ("joaillier des rois"), icônes (Love, Tank, Panthère). À noter : Perplexity est le seul à mentionner la Panthère dès la première question. ChatGPT et Claude se limitent au Love et à la Tank.</p>
+    <p>Cartier arrive en position 1 sur les trois plateformes. La notoriete digitale est sans faille. Les descriptifs reprennent les bons codes : heritage ("1847"), royaute ("joaillier des rois"), icones (Love, Tank, Panthere). A noter : Perplexity est le seul a mentionner la Panthere des la premiere question. ChatGPT et Claude se limitent au Love et a la Tank.</p>
 </div>
 
 <div class="question-box">
     <span class="q-label">Question 2</span>
-    Qu'est-ce qui rend Cartier spécial en joaillerie ?
+    Qu'est-ce qui rend Cartier special en joaillerie ?
 </div>
 
 <blockquote>
     <span class="platform-label">ChatGPT</span>
-    Six axes : héritage, design innovant, lien royal, gamme (joaillerie + horlogerie), prestige mondial, investissement. Mentionne la montre Santos, la bague Trinity, le bracelet Love.
+    Six axes : heritage, design innovant, lien royal, gamme (joaillerie + horlogerie), prestige mondial, investissement. Mentionne la montre Santos, la bague Trinity, le bracelet Love.
 </blockquote>
 
 <blockquote>
     <span class="platform-label">Perplexity</span>
-    Angle technique original : "alliance unique entre tradition et modernité, or 18 carats ou platine, système de fermeture du bracelet Love, modularité permettant de porter un bijou de 4 ou 5 façons".
+    Angle technique original : "alliance unique entre tradition et modernite, or 18 carats ou platine, systeme de fermeture du bracelet Love, modularite permettant de porter un bijou de 4 ou 5 facons".
 </blockquote>
 
 <blockquote>
     <span class="platform-label">Claude</span>
-    Structure en trois blocs : héritage historique (175 ans, clientèle royale), innovations emblématiques (Santos 1904 = première montre-bracelet masculine, pionnier du platine), savoir-faire d'exception.
+    Structure en trois blocs : heritage historique (175 ans, clientele royale), innovations emblematiques (Santos 1904 = premiere montre-bracelet masculine, pionnier du platine), savoir-faire d'exception.
 </blockquote>
 
 <div class="analysis-box">
     <h4>Analyse</h4>
     <span class="verdict verdict-good">Positif</span>
-    <p>La narration de marque passe bien dans les trois agents. L'histoire Santos (1904) est citée par Claude. Perplexity ajoute un angle métier rare et pertinent (modularité, système de fermeture). ChatGPT reste le plus générique. Aucun agent ne mentionne la haute joaillerie comme savoir-faire distinctif — c'est un manque notable.</p>
+    <p>La narration de marque passe bien dans les trois agents. L'histoire Santos (1904) est citee par Claude. Perplexity ajoute un angle metier rare et pertinent (modularite, systeme de fermeture). ChatGPT reste le plus generique. Aucun agent ne mentionne la haute joaillerie comme savoir-faire distinctif — c'est un manque notable.</p>
 </div>
 
 <div class="question-box">
     <span class="q-label">Question 3</span>
-    Quelle est la différence entre haute joaillerie et joaillerie fine ?
+    Quelle est la difference entre haute joaillerie et joaillerie fine ?
 </div>
 
 <div class="analysis-box">
     <h4>Analyse</h4>
-    <span class="verdict verdict-mixed">À surveiller</span>
-    <p>Les trois agents expliquent correctement la distinction (pièces uniques vs petites séries, pierres d'exception vs pierres fines, prix). Cartier est citée comme référence en haute joaillerie par les trois. Mais aucun ne détaille les collections HJ de Cartier (pas de mention de <em>Sixième Sens</em>, de <em>Beautés du Monde</em>, ni des présentations Place Vendôme). La haute joaillerie reste un mot-clé générique, pas un territoire de contenu spécifique à Cartier.</p>
+    <span class="verdict verdict-mixed">A surveiller</span>
+    <p>Les trois agents expliquent correctement la distinction (pieces uniques vs petites series, pierres d'exception vs pierres fines, prix). Cartier est citee comme reference en haute joaillerie par les trois. Mais aucun ne detaille les collections HJ de Cartier (pas de mention de <em>Sixieme Sens</em>, de <em>Beautes du Monde</em>, ni des presentations Place Vendome). La haute joaillerie reste un mot-cle generique, pas un territoire de contenu specifique a Cartier.</p>
 </div>
 
 <hr>
 
 <!-- ===== 2. COMPARAISON ===== -->
 
-<h2>2. Comparaison</h2>
-<p>Comment les agents positionnent-ils Cartier face à la concurrence directe ?</p>
+<span class="moment-label">Deuxieme moment</span>
+<span class="moment-title" id="comparaison">Comparaison</span>
+<p>Comment les agents positionnent-ils Cartier face a la concurrence directe ?</p>
 
 <div class="question-box">
     <span class="q-label">Question 1</span>
-    Cartier ou Van Cleef &amp; Arpels pour une bague de fiançailles ?
+    Cartier ou Van Cleef &amp; Arpels pour une bague de fiancailles ?
 </div>
 
 <blockquote>
     <span class="platform-label">ChatGPT</span>
-    Cartier = "designs classiques et intemporels", cite le Solitaire 1895 comme emblématique. Van Cleef = "approche artistique et poétique". Verdict neutre, dépend des préférences.
+    Cartier = "designs classiques et intemporels", cite le Solitaire 1895 comme emblematique. Van Cleef = "approche artistique et poetique". Verdict neutre, depend des preferences.
 </blockquote>
 
 <blockquote>
     <span class="platform-label">Perplexity</span>
-    Tableau comparatif structuré (style, prix, savoir-faire). Cartier = "classique et audacieux", Van Cleef = "poétique et enchanté". Le plus factuel des trois.
+    Tableau comparatif structure (style, prix, savoir-faire). Cartier = "classique et audacieux", Van Cleef = "poetique et enchante". Le plus factuel des trois.
 </blockquote>
 
 <blockquote>
     <span class="platform-label">Claude</span>
-    Format avantages/inconvénients. Cartier : prestige historique, reconnaissance mondiale, bonne valeur de revente. Inconvénient cité : "plus classique, moins d'originalité" et "prix élevé pour le nom".
+    Format avantages/inconvenients. Cartier : prestige historique, reconnaissance mondiale, bonne valeur de revente. Inconvenient cite : "plus classique, moins d'originalite" et "prix eleve pour le nom".
 </blockquote>
 
 <div class="analysis-box">
     <h4>Analyse</h4>
-    <span class="verdict verdict-mixed">À surveiller</span>
-    <p>Les trois agents traitent la question avec équilibre — aucun ne tranche en faveur de Cartier ou de Van Cleef. C'est normal pour une question de préférence. Mais le cadrage de Claude est préoccupant : "prix élevé pour le nom" est un jugement de valeur qui peut dissuader un acheteur. Et la qualification "moins d'originalité" face à Van Cleef est un raccourci qui ignore les collections récentes.</p>
+    <span class="verdict verdict-mixed">A surveiller</span>
+    <p>Les trois agents traitent la question avec equilibre — aucun ne tranche en faveur de Cartier ou de Van Cleef. C'est normal pour une question de preference. Mais le cadrage de Claude est preoccupant : "prix eleve pour le nom" est un jugement de valeur qui peut dissuader un acheteur. Et la qualification "moins d'originalite" face a Van Cleef est un raccourci qui ignore les collections recentes.</p>
 </div>
 
 <div class="question-box">
@@ -503,18 +911,18 @@
 
 <blockquote>
     <span class="platform-label">Perplexity</span>
-    Positionnement clair : "Cartier pour un style élégant, royal et formel avec une meilleure rétention de valeur ; Tiffany pour des pièces plus accessibles, modernes et adaptées au quotidien."
+    Positionnement clair : "Cartier pour un style elegant, royal et formel avec une meilleure retention de valeur ; Tiffany pour des pieces plus accessibles, modernes et adaptees au quotidien."
 </blockquote>
 
 <blockquote>
     <span class="platform-label">Claude</span>
-    Attribue à Cartier une "forte présence dans la maroquinerie et accessoires" — ce qui est factuellement inexact. Cartier n'est pas positionné sur la maroquinerie.
+    Attribue a Cartier une "forte presence dans la maroquinerie et accessoires" — ce qui est factuellement inexact. Cartier n'est pas positionne sur la maroquinerie.
 </blockquote>
 
 <div class="analysis-box">
     <h4>Analyse</h4>
     <span class="verdict verdict-concern">Alerte</span>
-    <p><strong>Erreur factuelle de Claude</strong> sur la maroquinerie. Ce type de confusion (probablement par association avec le groupe Richemont ou avec d'autres maisons) est exactement le genre d'inexactitude que les agents IA produisent sur les marques de luxe. Cartier ne contrôle pas ce contenu. Perplexity est le plus juste : meilleure rétention de valeur, positionnement "royal et formel" — ce qui correspond à l'identité de la maison.</p>
+    <p><strong>Erreur factuelle de Claude</strong> sur la maroquinerie. Ce type de confusion (probablement par association avec le groupe Richemont ou avec d'autres maisons) est exactement le genre d'inexactitude que les agents IA produisent sur les marques de luxe. Cartier ne controle pas ce contenu. Perplexity est le plus juste : meilleure retention de valeur, positionnement "royal et formel" — ce qui correspond a l'identite de la maison.</p>
 </div>
 
 <div class="question-box">
@@ -529,26 +937,27 @@
 
 <blockquote>
     <span class="platform-label">Perplexity</span>
-    Ne cite PAS Cartier. Recommande Messika, Pomellato, Chopard, Dinh Van avec des prix précis (3 500 à 5 500 euros). Tableau avec marque, type, description, prix.
+    Ne cite PAS Cartier. Recommande Messika, Pomellato, Chopard, Dinh Van avec des prix precis (3 500 a 5 500 euros). Tableau avec marque, type, description, prix.
 </blockquote>
 
 <blockquote>
     <span class="platform-label">Claude</span>
-    Ne cite pas Cartier dans les recommandations concrètes. Oriente vers Omega, TAG Heuer pour les montres et des génériques "bague en or avec diamant" sans marque.
+    Ne cite pas Cartier dans les recommandations concretes. Oriente vers Omega, TAG Heuer pour les montres et des generiques "bague en or avec diamant" sans marque.
 </blockquote>
 
 <div class="analysis-box">
     <h4>Analyse</h4>
     <span class="verdict verdict-concern">Alerte</span>
-    <p><strong>Cartier disparaît du radar à 5 000 euros.</strong> Perplexity et Claude ne la citent pas du tout. Or, le petit modèle Love (Love fin en or jaune) est à 5 350 euros. La bague Trinity classique en or est dans cette gamme. Il existe des points d'entrée Cartier à ce budget — mais les agents ne le savent pas. C'est un trou de visibilité majeur sur le segment "premier achat de luxe".</p>
+    <p><strong>Cartier disparait du radar a 5 000 euros.</strong> Perplexity et Claude ne la citent pas du tout. Or, le petit modele Love (Love fin en or jaune) est a 5 350 euros. La bague Trinity classique en or est dans cette gamme. Il existe des points d'entree Cartier a ce budget — mais les agents ne le savent pas. C'est un trou de visibilite majeur sur le segment "premier achat de luxe".</p>
 </div>
 
 <hr>
 
 <!-- ===== 3. VALIDATION ===== -->
 
-<h2>3. Validation</h2>
-<p>Comment les agents répondent-ils à un acheteur qui hésite, qui cherche à se rassurer ?</p>
+<span class="moment-label">Troisieme moment</span>
+<span class="moment-title" id="validation">Validation</span>
+<p>Comment les agents repondent-ils a un acheteur qui hesite, qui cherche a se rassurer ?</p>
 
 <div class="question-box">
     <span class="q-label">Question 1</span>
@@ -557,23 +966,23 @@
 
 <blockquote>
     <span class="platform-label">ChatGPT</span>
-    Prudent : "cela dépend de vos priorités personnelles, de votre budget". Cite qualité, héritage, prestige, valeur de revente comme arguments positifs.
+    Prudent : "cela depend de vos priorites personnelles, de votre budget". Cite qualite, heritage, prestige, valeur de revente comme arguments positifs.
 </blockquote>
 
 <blockquote>
     <span class="platform-label">Perplexity</span>
-    Le plus affirmatif : "investissement de luxe justifié pour ceux qui recherchent l'élégance intemporelle et la qualité exceptionnelle". Mentionne la demande constante sur Love et Trinity.
+    Le plus affirmatif : "investissement de luxe justifie pour ceux qui recherchent l'elegance intemporelle et la qualite exceptionnelle". Mentionne la demande constante sur Love et Trinity.
 </blockquote>
 
 <blockquote>
     <span class="platform-label">Claude</span>
-    Liste équilibrée avantages/inconvénients. Point négatif cité : "markup important sur certaines pièces" et "alternatives offrant parfois un rapport qualité-prix comparable".
+    Liste equilibree avantages/inconvenients. Point negatif cite : "markup important sur certaines pieces" et "alternatives offrant parfois un rapport qualite-prix comparable".
 </blockquote>
 
 <div class="analysis-box">
     <h4>Analyse</h4>
-    <span class="verdict verdict-mixed">À surveiller</span>
-    <p>Perplexity joue clairement en faveur de Cartier. Claude, à l'inverse, introduit un doute ("markup important") qui n'est pas sourcé. ChatGPT est neutre. Pour un acheteur en phase de validation, la réponse de Claude pourrait faire hésiter — et pousser vers la question suivante : "quelles alternatives ?"</p>
+    <span class="verdict verdict-mixed">A surveiller</span>
+    <p>Perplexity joue clairement en faveur de Cartier. Claude, a l'inverse, introduit un doute ("markup important") qui n'est pas source. ChatGPT est neutre. Pour un acheteur en phase de validation, la reponse de Claude pourrait faire hesiter — et pousser vers la question suivante : "quelles alternatives ?"</p>
 </div>
 
 <div class="question-box">
@@ -583,52 +992,53 @@
 
 <blockquote>
     <span class="platform-label">Perplexity</span>
-    Réponse la plus riche : "créé en 1969 à New York par Aldo Cipullo, bracelet rigide ovale aux vis apparentes symbolisant un amour éternel". Cite prix spécifiques et appréciation de valeur.
+    Reponse la plus riche : "cree en 1969 a New York par Aldo Cipullo, bracelet rigide ovale aux vis apparentes symbolisant un amour eternel". Cite prix specifiques et appreciation de valeur.
 </blockquote>
 
 <blockquote>
     <span class="platform-label">Claude</span>
-    Cite les prix (7 000-15 000 euros+), mentionne la contrainte physique comme point négatif ("se porte en permanence").
+    Cite les prix (7 000-15 000 euros+), mentionne la contrainte physique comme point negatif ("se porte en permanence").
 </blockquote>
 
 <div class="analysis-box">
     <h4>Analyse</h4>
     <span class="verdict verdict-good">Positif</span>
-    <p>Les trois agents valident le Love comme bon achat. L'histoire (Aldo Cipullo, 1969, New York) est bien documentée. Perplexity est le plus convaincant avec des données chiffrées. La mention de la "contrainte physique" par Claude est factuelle et honnête — un client averti apprécie cette transparence.</p>
+    <p>Les trois agents valident le Love comme bon achat. L'histoire (Aldo Cipullo, 1969, New York) est bien documentee. Perplexity est le plus convaincant avec des donnees chiffrees. La mention de la "contrainte physique" par Claude est factuelle et honnete — un client averti apprecie cette transparence.</p>
 </div>
 
 <div class="question-box">
     <span class="q-label">Question 3</span>
-    Cartier est-elle une marque éthique pour les diamants ?
+    Cartier est-elle une marque ethique pour les diamants ?
 </div>
 
 <blockquote>
     <span class="platform-label">ChatGPT</span>
-    Nuancé : membre fondateur du Responsible Jewellery Council (RJC), respecte le processus de Kimberley. "A pris des mesures pour améliorer l'éthique de ses pratiques."
+    Nuance : membre fondateur du Responsible Jewellery Council (RJC), respecte le processus de Kimberley. "A pris des mesures pour ameliorer l'ethique de ses pratiques."
 </blockquote>
 
 <blockquote>
     <span class="platform-label">Perplexity</span>
-    Réponse nette et sévère : "Non, Cartier n'est pas considérée comme une marque pleinement éthique pour ses diamants selon les critères stricts d'éthique, faute de preuves tangibles de traçabilité irréprochable."
+    Reponse nette et severe : "Non, Cartier n'est pas consideree comme une marque pleinement ethique pour ses diamants selon les criteres stricts d'ethique, faute de preuves tangibles de tracabilite irreprochable."
 </blockquote>
 
 <blockquote>
     <span class="platform-label">Claude</span>
-    Position intermédiaire. Cite le RJC et Kimberley comme positifs, mais soulève les limites : "processus de Kimberley insuffisant, ne couvre pas tous les aspects éthiques".
+    Position intermediaire. Cite le RJC et Kimberley comme positifs, mais souleve les limites : "processus de Kimberley insuffisant, ne couvre pas tous les aspects ethiques".
 </blockquote>
 
 <div class="analysis-box">
     <h4>Analyse</h4>
     <span class="verdict verdict-concern">Alerte</span>
-    <p><strong>Le sujet éthique est le plus sensible du benchmark.</strong> Perplexity est sans appel. Or, cette réponse est la première qu'un acheteur engagé lira s'il pose la question. Cartier a pourtant des engagements réels (RJC, traçabilité, programme "Cartier for Nature") mais ces contenus ne sont visiblement pas assez structurés pour être captés par les agents IA. C'est un enjeu de réputation algorithmique.</p>
+    <p><strong>Le sujet ethique est le plus sensible du benchmark.</strong> Perplexity est sans appel. Or, cette reponse est la premiere qu'un acheteur engage lira s'il pose la question. Cartier a pourtant des engagements reels (RJC, tracabilite, programme "Cartier for Nature") mais ces contenus ne sont visiblement pas assez structures pour etre captes par les agents IA. C'est un enjeu de reputation algorithmique.</p>
 </div>
 
 <hr>
 
 <!-- ===== 4. PROCESS ===== -->
 
-<h2>4. Parcours d'achat</h2>
-<p>Les agents peuvent-ils guider un acheteur jusqu'à la transaction ?</p>
+<span class="moment-label">Quatrieme moment</span>
+<span class="moment-title" id="process">Parcours d'achat</span>
+<p>Les agents peuvent-ils guider un acheteur jusqu'a la transaction ?</p>
 
 <div class="question-box">
     <span class="q-label">Question 1</span>
@@ -637,23 +1047,23 @@
 
 <blockquote>
     <span class="platform-label">ChatGPT</span>
-    Trois canaux : boutiques Cartier, site officiel, détaillants agréés. Mentionne la personnalisation et la livraison en ligne.
+    Trois canaux : boutiques Cartier, site officiel, detaillants agrees. Mentionne la personnalisation et la livraison en ligne.
 </blockquote>
 
 <blockquote>
     <span class="platform-label">Perplexity</span>
-    Ajoute des détails d'authentification ("or 18 carats 750/1000, système de vis signature") et oriente aussi vers le marché de seconde main.
+    Ajoute des details d'authentification ("or 18 carats 750/1000, systeme de vis signature") et oriente aussi vers le marche de seconde main.
 </blockquote>
 
 <blockquote>
     <span class="platform-label">Claude</span>
-    Le plus détaillé sur l'occasion : cite Vestiaire Collective, The RealReal, Collector Square, Chronext comme canaux alternatifs.
+    Le plus detaille sur l'occasion : cite Vestiaire Collective, The RealReal, Collector Square, Chronext comme canaux alternatifs.
 </blockquote>
 
 <div class="analysis-box">
     <h4>Analyse</h4>
     <span class="verdict verdict-concern">Alerte</span>
-    <p><strong>Les trois agents citent le marché de la seconde main comme canal d'achat valide.</strong> Claude y consacre une section entière. Pour une maison qui contrôle sa distribution, c'est un signal : l'agent IA agit comme un prescripteur qui normalise l'achat hors réseau. Aucun agent ne propose de prendre rendez-vous en boutique, de trouver la boutique la plus proche, ou de consulter la disponibilité. L'expérience s'arrête à "allez sur cartier.com".</p>
+    <p><strong>Les trois agents citent le marche de la seconde main comme canal d'achat valide.</strong> Claude y consacre une section entiere. Pour une maison qui controle sa distribution, c'est un signal : l'agent IA agit comme un prescripteur qui normalise l'achat hors reseau. Aucun agent ne propose de prendre rendez-vous en boutique, de trouver la boutique la plus proche, ou de consulter la disponibilite. L'experience s'arrete a "allez sur cartier.com".</p>
 </div>
 
 <div class="question-box">
@@ -663,23 +1073,23 @@
 
 <blockquote>
     <span class="platform-label">ChatGPT</span>
-    Refuse de répondre : "je ne peux pas prédire les prix futurs". Ne donne aucun chiffre.
+    Refuse de repondre : "je ne peux pas predire les prix futurs". Ne donne aucun chiffre.
 </blockquote>
 
 <blockquote>
     <span class="platform-label">Perplexity</span>
-    Le seul à fournir des données détaillées : "Love fin en or jaune 5 350 euros (+3,8 %), bague Love classique 1 380 euros, bague Love or blanc huit diamants 4 950 euros (+2 %)". Source les prix 2025.
+    Le seul a fournir des donnees detaillees : "Love fin en or jaune 5 350 euros (+3,8 %), bague Love classique 1 380 euros, bague Love or blanc huit diamants 4 950 euros (+2 %)". Source les prix 2025.
 </blockquote>
 
 <blockquote>
     <span class="platform-label">Claude</span>
-    Avoue être en 2024 (erreur de date interne), donne des approximations : "Love classique en or environ 7 000-8 000 euros, Love avec diamants à partir de 10 000 euros+". Recommande de consulter Cartier directement.
+    Avoue etre en 2024 (erreur de date interne), donne des approximations : "Love classique en or environ 7 000-8 000 euros, Love avec diamants a partir de 10 000 euros+". Recommande de consulter Cartier directement.
 </blockquote>
 
 <div class="analysis-box">
     <h4>Analyse</h4>
-    <span class="verdict verdict-mixed">À surveiller</span>
-    <p>Écart considérable entre les plateformes. Perplexity, grâce à ses sources web en temps réel, est le seul fiable sur les prix. ChatGPT refuse de répondre. Claude donne des chiffres obsolètes. Pour un acheteur, cette disparité est déroutante. Les prix Cartier sont publics sur cartier.com — mais les agents ne vont pas les chercher en temps réel (sauf Perplexity qui indexe des articles de presse spécialisée).</p>
+    <span class="verdict verdict-mixed">A surveiller</span>
+    <p>Ecart considerable entre les plateformes. Perplexity, grace a ses sources web en temps reel, est le seul fiable sur les prix. ChatGPT refuse de repondre. Claude donne des chiffres obsoletes. Pour un acheteur, cette disparite est deroutante. Les prix Cartier sont publics sur cartier.com — mais les agents ne vont pas les chercher en temps reel (sauf Perplexity qui indexe des articles de presse specialisee).</p>
 </div>
 
 <div class="question-box">
@@ -690,14 +1100,15 @@
 <div class="analysis-box">
     <h4>Analyse</h4>
     <span class="verdict verdict-good">Positif</span>
-    <p>Les trois agents sont précis et cohérents : gravure "Cartier", numéro de série, poinçons (750 pour or 18K, 950 pour platine), qualité de fabrication, écrin officiel. Claude ajoute le poids comme critère ("les contrefaçons sont souvent plus légères"). C'est l'une des rares questions où les agents donnent une réponse opérationnelle utile. À noter : aucun ne mentionne le service d'authentification officiel de Cartier.</p>
+    <p>Les trois agents sont precis et coherents : gravure "Cartier", numero de serie, poincons (750 pour or 18K, 950 pour platine), qualite de fabrication, ecrin officiel. Claude ajoute le poids comme critere ("les contrefacons sont souvent plus legeres"). C'est l'une des rares questions ou les agents donnent une reponse operationnelle utile. A noter : aucun ne mentionne le service d'authentification officiel de Cartier.</p>
 </div>
 
 <hr>
 
 <!-- ===== 5. INVESTISSEMENT ===== -->
 
-<h2>5. Investissement</h2>
+<span class="moment-label">Cinquieme moment</span>
+<span class="moment-title" id="investissement">Investissement</span>
 <p>Comment les agents traitent-ils la dimension patrimoniale ?</p>
 
 <div class="question-box">
@@ -707,18 +1118,18 @@
 
 <blockquote>
     <span class="platform-label">Perplexity</span>
-    Le plus factuel : cite des hausses spécifiques 2024-2025 (+17,9 % sur certains bracelets pavés, +4,1 % sur le Love pavé en or blanc, +3,8 % sur le Love fin). Mentionne les collections Love, Trinity et Juste un Clou comme les meilleures pour l'appréciation.
+    Le plus factuel : cite des hausses specifiques 2024-2025 (+17,9 % sur certains bracelets paves, +4,1 % sur le Love pave en or blanc, +3,8 % sur le Love fin). Mentionne les collections Love, Trinity et Juste un Clou comme les meilleures pour l'appreciation.
 </blockquote>
 
 <blockquote>
     <span class="platform-label">Claude</span>
-    Distingue les pièces vintage (1920-1960) des pièces récentes. Cite la haute joaillerie et les modèles discontinués comme les plus intéressants. Nuance : "toutes les pièces ne s'apprécient pas de la même façon".
+    Distingue les pieces vintage (1920-1960) des pieces recentes. Cite la haute joaillerie et les modeles discontinues comme les plus interessants. Nuance : "toutes les pieces ne s'apprecient pas de la meme facon".
 </blockquote>
 
 <div class="analysis-box">
     <h4>Analyse</h4>
     <span class="verdict verdict-good">Positif</span>
-    <p>Les trois agents valident le potentiel de valorisation. Perplexity est le plus précis avec des pourcentages de hausse récents. Claude apporte une perspective intéressante sur le vintage. Le récit "Cartier comme valeur refuge" passe bien dans les IA.</p>
+    <p>Les trois agents valident le potentiel de valorisation. Perplexity est le plus precis avec des pourcentages de hausse recents. Claude apporte une perspective interessante sur le vintage. Le recit "Cartier comme valeur refuge" passe bien dans les IA.</p>
 </div>
 
 <div class="question-box">
@@ -728,25 +1139,26 @@
 
 <blockquote>
     <span class="platform-label">Perplexity</span>
-    Tranche en faveur de Cartier : "généralement considéré comme un meilleur investissement, reconnaissance internationale, pièces iconiques qui conservent bien leur valeur, part dominante estimée à 65 % dans la croissance du segment joaillerie de Richemont".
+    Tranche en faveur de Cartier : "generalement considere comme un meilleur investissement, reconnaissance internationale, pieces iconiques qui conservent bien leur valeur, part dominante estimee a 65 % dans la croissance du segment joaillerie de Richemont".
 </blockquote>
 
 <blockquote>
     <span class="platform-label">Claude</span>
-    Plus nuancé : "Cartier = plus stable, liquidité plus élevée, marché plus large. Van Cleef = plus exclusif, rareté, appréciation potentielle plus forte". Positionne Van Cleef comme le choix des collectionneurs.
+    Plus nuance : "Cartier = plus stable, liquidite plus elevee, marche plus large. Van Cleef = plus exclusif, rarete, appreciation potentielle plus forte". Positionne Van Cleef comme le choix des collectionneurs.
 </blockquote>
 
 <div class="analysis-box">
     <h4>Analyse</h4>
     <span class="verdict verdict-good">Positif</span>
-    <p>Cartier est favorisée sur l'investissement par les trois plateformes. Le chiffre de 65 % de la croissance joaillerie Richemont (cité par Perplexity) est un argument fort. La distinction de Claude entre liquidité (Cartier) et appréciation (Van Cleef) est pertinente et honnête.</p>
+    <p>Cartier est favorisee sur l'investissement par les trois plateformes. Le chiffre de 65 % de la croissance joaillerie Richemont (cite par Perplexity) est un argument fort. La distinction de Claude entre liquidite (Cartier) et appreciation (Van Cleef) est pertinente et honnete.</p>
 </div>
 
 <hr>
 
 <!-- ===== 6. SUBSTITUTION ===== -->
 
-<h2>6. Substitution</h2>
+<span class="moment-label">Sixieme moment</span>
+<span class="moment-title" id="substitution">Substitution</span>
 <p>Quand un utilisateur cherche des alternatives, vers quoi les agents orientent-ils ?</p>
 
 <div class="question-box">
@@ -756,138 +1168,138 @@
 
 <blockquote>
     <span class="platform-label">ChatGPT</span>
-    Cite Tiffany (collection T), Bvlgari (B.Zero1, Serpenti), Hermès, Van Cleef. Reste dans le luxe.
+    Cite Tiffany (collection T), Bvlgari (B.Zero1, Serpenti), Hermes, Van Cleef. Reste dans le luxe.
 </blockquote>
 
 <blockquote>
     <span class="platform-label">Perplexity</span>
-    Mentionne le Juste Un Clou de Cartier comme première alternative (même designer, Aldo Cipullo). Puis Hermès, Van Cleef. Inclut aussi des alternatives en argent ou acier.
+    Mentionne le Juste Un Clou de Cartier comme premiere alternative (meme designer, Aldo Cipullo). Puis Hermes, Van Cleef. Inclut aussi des alternatives en argent ou acier.
 </blockquote>
 
 <blockquote>
     <span class="platform-label">Claude</span>
-    Trois niveaux : luxe (Van Cleef, Tiffany, Hermès, Bvlgari), milieu de gamme (Pandora, Swarovski, Daniel Wellington), abordable (Michael Kors). Le spectre le plus large.
+    Trois niveaux : luxe (Van Cleef, Tiffany, Hermes, Bvlgari), milieu de gamme (Pandora, Swarovski, Daniel Wellington), abordable (Michael Kors). Le spectre le plus large.
 </blockquote>
 
 <div class="analysis-box">
     <h4>Analyse</h4>
     <span class="verdict verdict-concern">Alerte</span>
-    <p><strong>Claude met Cartier et Pandora dans la même réponse.</strong> Même si c'est structuré par gamme de prix, la cohabitation visuelle est problématique pour le positionnement de la maison. Perplexity a le bon réflexe : proposer le Juste Un Clou comme première alternative (upsell interne à Cartier). C'est exactement le type de réponse qu'une maison souhaiterait voir l'agent produire.</p>
+    <p><strong>Claude met Cartier et Pandora dans la meme reponse.</strong> Meme si c'est structure par gamme de prix, la cohabitation visuelle est problematique pour le positionnement de la maison. Perplexity a le bon reflexe : proposer le Juste Un Clou comme premiere alternative (upsell interne a Cartier). C'est exactement le type de reponse qu'une maison souhaiterait voir l'agent produire.</p>
 </div>
 
 <div class="question-box">
     <span class="q-label">Question 2</span>
-    Des marques comme Cartier mais moins chères ?
+    Des marques comme Cartier mais moins cheres ?
 </div>
 
 <blockquote>
     <span class="platform-label">Perplexity</span>
-    Répond principalement sur l'horlogerie : Longines DolceVita, Orient, Seiko, Lip, Oris, Tissot. Prix 100 à 2 000 euros. Angle "alternatives à la Cartier Tank".
+    Repond principalement sur l'horlogerie : Longines DolceVita, Orient, Seiko, Lip, Oris, Tissot. Prix 100 a 2 000 euros. Angle "alternatives a la Cartier Tank".
 </blockquote>
 
 <blockquote>
     <span class="platform-label">Claude</span>
-    Sépare montres (Tissot, Frédérique Constant, Longines, TAG Heuer) et bijoux (Pandora, Swarovski, Thomas Sabo, Michael Kors).
+    Separe montres (Tissot, Frederique Constant, Longines, TAG Heuer) et bijoux (Pandora, Swarovski, Thomas Sabo, Michael Kors).
 </blockquote>
 
 <div class="analysis-box">
     <h4>Analyse</h4>
     <span class="verdict verdict-concern">Alerte</span>
-    <p>La question de substitution est celle où Cartier a le plus à perdre. Les agents répondent volontiers — et orientent vers des marques qui n'ont rien à voir avec le positionnement Cartier. La cohabitation avec Swarovski ou Thomas Sabo, même en "alternative abordable", dilue la perception de la maison. Perplexity limite la casse en restant sur l'horlogerie (Longines est un comparatif moins dégradant que Pandora).</p>
+    <p>La question de substitution est celle ou Cartier a le plus a perdre. Les agents repondent volontiers — et orientent vers des marques qui n'ont rien a voir avec le positionnement Cartier. La cohabitation avec Swarovski ou Thomas Sabo, meme en "alternative abordable", dilue la perception de la maison. Perplexity limite la casse en restant sur l'horlogerie (Longines est un comparatif moins degradant que Pandora).</p>
 </div>
 
 <hr>
 
 <!-- ===== CONCLUSIONS ===== -->
 
-<h2>Conclusions et recommandations</h2>
+<h2 id="conclusions">Conclusions et recommandations</h2>
 
 <h3>Positionnement concurrentiel</h3>
 
 <table>
     <tr>
-        <th>Critère</th>
+        <th>Critere</th>
         <th>Cartier</th>
         <th>Van Cleef &amp; Arpels</th>
         <th>Tiffany</th>
         <th>Bvlgari</th>
     </tr>
     <tr>
-        <td>Position dans les réponses</td>
-        <td><strong>1re quasi-systématique</strong></td>
+        <td>Position dans les reponses</td>
+        <td><strong>1re quasi-systematique</strong></td>
         <td>2e ou 3e</td>
         <td>2e ou 3e</td>
         <td>4e ou 5e</td>
     </tr>
     <tr>
-        <td>Précision des informations</td>
-        <td>Bonne (héritage, icônes)</td>
-        <td>Bonne (poétique, serti Mystery)</td>
+        <td>Precision des informations</td>
+        <td>Bonne (heritage, icones)</td>
+        <td>Bonne (poetique, serti Mystery)</td>
         <td>Correcte (diamants, Tiffany Blue)</td>
-        <td>Faible (souvent générique)</td>
+        <td>Faible (souvent generique)</td>
     </tr>
     <tr>
         <td>Profondeur des collections</td>
         <td>Faible (Love/Tank/Trinity dominent)</td>
-        <td>Moyenne (Alhambra, Perlée)</td>
+        <td>Moyenne (Alhambra, Perlee)</td>
         <td>Faible (Tiffany Setting)</td>
         <td>Faible (B.Zero1, Serpenti)</td>
     </tr>
     <tr>
-        <td>Erreurs factuelles détectées</td>
-        <td>1 (maroquinerie attribuée par Claude)</td>
+        <td>Erreurs factuelles detectees</td>
+        <td>1 (maroquinerie attribuee par Claude)</td>
         <td>Aucune</td>
         <td>Aucune</td>
         <td>Aucune</td>
     </tr>
     <tr>
         <td>Perception investissement</td>
-        <td><strong>Très favorable</strong></td>
+        <td><strong>Tres favorable</strong></td>
         <td>Favorable (niche)</td>
         <td>Neutre</td>
-        <td>Non évaluée</td>
+        <td>Non evaluee</td>
     </tr>
 </table>
 
 <h3>Ce que les agents retiennent bien</h3>
 <ul>
-    <li>L'héritage historique (1847, "joaillier des rois") est parfaitement intégré.</li>
-    <li>Les pièces iconiques (Love, Tank, Santos, Trinity) sont systématiquement citées.</li>
+    <li>L'heritage historique (1847, "joaillier des rois") est parfaitement integre.</li>
+    <li>Les pieces iconiques (Love, Tank, Santos, Trinity) sont systematiquement citees.</li>
     <li>La valeur de revente et le potentiel d'investissement sont reconnus par les trois plateformes.</li>
-    <li>Le processus de Kimberley et le RJC sont mentionnés sur la question éthique.</li>
+    <li>Le processus de Kimberley et le RJC sont mentionnes sur la question ethique.</li>
 </ul>
 
-<h3>Ce que les agents ratent ou déforment</h3>
+<h3>Ce que les agents ratent ou deforment</h3>
 <ul>
-    <li><strong>La haute joaillerie est invisible.</strong> Aucune collection HJ spécifique n'est citée. Les présentations Place Vendôme, les pièces uniques, les commandes spéciales — rien de tout cela n'apparaît.</li>
-    <li><strong>La Panthère est sous-représentée.</strong> Mentionnée une seule fois (par Perplexity). Or c'est un pilier de l'identité visuelle de la maison.</li>
-    <li><strong>L'horlogerie est réduite à Tank et Santos.</strong> Pas de Ballon Bleu, pas de Clé, pas de Crash.</li>
-    <li><strong>Les engagements RSE sont mal documentés.</strong> "Cartier for Nature", la Fondation Cartier pour l'art contemporain, les programmes de formation — rien ne remonte.</li>
-    <li><strong>Claude attribue la maroquinerie à Cartier</strong> — erreur factuelle nette.</li>
-    <li><strong>Les points d'entrée de gamme sont inconnus</strong> : à 5 000 euros, Cartier disparaît des recommandations.</li>
+    <li><strong>La haute joaillerie est invisible.</strong> Aucune collection HJ specifique n'est citee. Les presentations Place Vendome, les pieces uniques, les commandes speciales — rien de tout cela n'apparait.</li>
+    <li><strong>La Panthere est sous-representee.</strong> Mentionnee une seule fois (par Perplexity). Or c'est un pilier de l'identite visuelle de la maison.</li>
+    <li><strong>L'horlogerie est reduite a Tank et Santos.</strong> Pas de Ballon Bleu, pas de Cle, pas de Crash.</li>
+    <li><strong>Les engagements RSE sont mal documentes.</strong> "Cartier for Nature", la Fondation Cartier pour l'art contemporain, les programmes de formation — rien ne remonte.</li>
+    <li><strong>Claude attribue la maroquinerie a Cartier</strong> — erreur factuelle nette.</li>
+    <li><strong>Les points d'entree de gamme sont inconnus</strong> : a 5 000 euros, Cartier disparait des recommandations.</li>
 </ul>
 
-<h3>Le problème du Love bracelet</h3>
-<p>Le bracelet Love est un actif de marque extraordinaire. Mais dans les réponses des agents IA, il fonctionne comme un écran : il capture toute la visibilité et masque le reste de l'offre. Quand un utilisateur pose une question générique sur Cartier, la réponse revient systématiquement au Love. C'est à la fois une force (reconnaissance) et un risque (réduction de la marque à un seul produit).</p>
-<p>Van Cleef échappe à ce problème : l'Alhambra, le Perlée, le serti Mystery coexistent dans les réponses sans qu'un seul domine.</p>
+<h3>Le probleme du Love bracelet</h3>
+<p>Le bracelet Love est un actif de marque extraordinaire. Mais dans les reponses des agents IA, il fonctionne comme un ecran : il capture toute la visibilite et masque le reste de l'offre. Quand un utilisateur pose une question generique sur Cartier, la reponse revient systematiquement au Love. C'est a la fois une force (reconnaissance) et un risque (reduction de la marque a un seul produit).</p>
+<p>Van Cleef echappe a ce probleme : l'Alhambra, le Perlee, le serti Mystery coexistent dans les reponses sans qu'un seul domine.</p>
 
-<h3>Le trou d'actionnabilité</h3>
-<p>Les agents IA ne savent pas vendre. Ils informent, comparent, rassurent (ou inquiètent). Mais au moment de passer à l'acte, le parcours s'arrête. Aucun ne propose :</p>
+<h3>Le trou d'actionnabilite</h3>
+<p>Les agents IA ne savent pas vendre. Ils informent, comparent, rassurent (ou inquietent). Mais au moment de passer a l'acte, le parcours s'arrete. Aucun ne propose :</p>
 <ul>
     <li>De localiser la boutique la plus proche avec ses horaires</li>
     <li>De prendre rendez-vous pour un essai</li>
-    <li>De vérifier la disponibilité d'un modèle</li>
-    <li>D'initier un parcours d'achat assisté (configurateur, chat concierge)</li>
+    <li>De verifier la disponibilite d'un modele</li>
+    <li>D'initier un parcours d'achat assiste (configurateur, chat concierge)</li>
 </ul>
-<p>Le dernier geste est toujours le même : "consultez cartier.com". C'est là que se situe l'espace d'innovation pour les maisons. Celui qui rend son expérience accessible aux agents IA (via des APIs, des données structurées, des intents commerce) capturera une part disproportionnée de la conversion.</p>
+<p>Le dernier geste est toujours le meme : "consultez cartier.com". C'est la que se situe l'espace d'innovation pour les maisons. Celui qui rend son experience accessible aux agents IA (via des APIs, des donnees structurees, des intents commerce) capturera une part disproportionnee de la conversion.</p>
 
 <hr>
 
-<h2>Ce qu'une directrice de collection peut en retenir</h2>
+<h2 id="reco">Ce qu'une directrice de collection peut en retenir</h2>
 
 <div class="reco-card">
     <h4>1. La haute joaillerie a besoin de contenu machine-readable</h4>
-    <p>Les collections HJ n'existent pas dans les réponses des agents parce qu'elles ne sont pas documentées dans un format que les IA peuvent ingérer. Les dossiers de presse, les catalogues PDF, les films de présentation — tout cela est invisible pour un LLM (Large Language Model, le moteur derrière ChatGPT et consorts). Les collections qui seront décrites en texte structuré, avec des métadonnées (pierres, carats, inspiration, année de création), seront celles que les agents citeront.</p>
+    <p>Les collections HJ n'existent pas dans les reponses des agents parce qu'elles ne sont pas documentees dans un format que les IA peuvent ingerer. Les dossiers de presse, les catalogues PDF, les films de presentation — tout cela est invisible pour un LLM (Large Language Model, le moteur derriere ChatGPT et consorts). Les collections qui seront decrites en texte structure, avec des metadonnees (pierres, carats, inspiration, annee de creation), seront celles que les agents citeront.</p>
     <div class="how-to">
         <h5>Comment faire</h5>
         <ul>
@@ -901,8 +1313,8 @@
 </div>
 
 <div class="reco-card">
-    <h4>2. Diversifier les icônes dans le récit digital</h4>
-    <p>Si le Love capte 80 % de la visibilité, c'est aussi parce que c'est le produit le plus documenté en ligne (articles de presse, vidéos YouTube, forums, blogs). Les autres collections n'ont pas le même volume de contenu tiers. Alimenter la conversation sur la Panthère, sur Clash, sur Juste un Clou — pas seulement via la publicité, mais via du contenu éditorial et des partenariats — est un levier pour rééquilibrer le récit algorithmique.</p>
+    <h4>2. Diversifier les icones dans le recit digital</h4>
+    <p>Si le Love capte 80 % de la visibilite, c'est aussi parce que c'est le produit le plus documente en ligne (articles de presse, videos YouTube, forums, blogs). Les autres collections n'ont pas le meme volume de contenu tiers. Alimenter la conversation sur la Panthere, sur Clash, sur Juste un Clou — pas seulement via la publicite, mais via du contenu editorial et des partenariats — est un levier pour reequilibrer le recit algorithmique.</p>
     <div class="how-to">
         <h5>Comment faire</h5>
         <ul>
@@ -915,8 +1327,8 @@
 </div>
 
 <div class="reco-card">
-    <h4>3. Occuper le terrain "premier achat" à 5 000 euros</h4>
-    <p>Cartier disparaît des recommandations à ce budget. Pourtant, la bague Trinity, le Love fin, les petits modèles Panthère sont dans cette gamme. C'est un segment stratégique : le premier achat Cartier fabrique un client à vie. Si les agents IA n'y dirigent personne, c'est Messika, Dinh Van ou Pomellato qui captent cette intention.</p>
+    <h4>3. Occuper le terrain "premier achat" a 5 000 euros</h4>
+    <p>Cartier disparait des recommandations a ce budget. Pourtant, la bague Trinity, le Love fin, les petits modeles Panthere sont dans cette gamme. C'est un segment strategique : le premier achat Cartier fabrique un client a vie. Si les agents IA n'y dirigent personne, c'est Messika, Dinh Van ou Pomellato qui captent cette intention.</p>
     <div class="how-to">
         <h5>Comment faire</h5>
         <ul>
@@ -930,8 +1342,8 @@
 </div>
 
 <div class="reco-card">
-    <h4>4. Préparer le récit éthique</h4>
-    <p>La réponse de Perplexity sur l'éthique des diamants est un risque réputationnel mesurable. Un acheteur qui pose cette question à un agent IA en 2026 lit "Cartier n'est pas considérée comme une marque pleinement éthique". La maison a des engagements réels (RJC, Kimberley, traçabilité, "Cartier for Nature"). Mais ils ne sont pas structurés pour être captés par les IA. Publier une page dédiée, avec des données vérifiables et des indicateurs, c'est de la gestion de risque — pas de la communication.</p>
+    <h4>4. Preparer le recit ethique</h4>
+    <p>La reponse de Perplexity sur l'ethique des diamants est un risque reputationnel mesurable. Un acheteur qui pose cette question a un agent IA en 2026 lit "Cartier n'est pas consideree comme une marque pleinement ethique". La maison a des engagements reels (RJC, Kimberley, tracabilite, "Cartier for Nature"). Mais ils ne sont pas structures pour etre captes par les IA. Publier une page dediee, avec des donnees verifiables et des indicateurs, c'est de la gestion de risque — pas de la communication.</p>
     <div class="how-to">
         <h5>Comment faire</h5>
         <ul>
@@ -946,7 +1358,7 @@
 
 <div class="reco-card">
     <h4>5. Surveiller la normalisation de la seconde main</h4>
-    <p>Les trois agents citent Vestiaire Collective, The RealReal ou Collector Square comme canaux d'achat pour du Cartier. Ce n'est pas une anomalie : c'est le reflet de ce que disent les contenus en ligne. Mais pour une maison qui contrôle sa distribution, voir un agent IA orienter un acheteur vers le marché gris est un sujet stratégique. La réponse n'est pas de censurer — c'est de proposer une alternative si convaincante (prise de rendez-vous, essai, financement, SAV à vie) que le canal officiel devienne l'évidence.</p>
+    <p>Les trois agents citent Vestiaire Collective, The RealReal ou Collector Square comme canaux d'achat pour du Cartier. Ce n'est pas une anomalie : c'est le reflet de ce que disent les contenus en ligne. Mais pour une maison qui controle sa distribution, voir un agent IA orienter un acheteur vers le marche gris est un sujet strategique. La reponse n'est pas de censurer — c'est de proposer une alternative si convaincante (prise de rendez-vous, essai, financement, SAV a vie) que le canal officiel devienne l'evidence.</p>
     <div class="how-to">
         <h5>Comment faire</h5>
         <ul>
@@ -976,15 +1388,56 @@
 
 <hr>
 
-<h3>Note de méthode</h3>
-<p>Ce benchmark a été réalisé en mars 2026 sur trois plateformes d'IA générative : ChatGPT (modèle GPT-4o), Perplexity (modèle Sonar) et Claude (modèle Sonnet 4). 17 requêtes en français, rédigées dans un registre conversationnel naturel (tutoiement, abréviations, formulations du quotidien). Les réponses ont été collectées, croisées et analysées sans modification.</p>
-<p>Les résultats reflètent l'état des modèles à la date du test. Les agents IA évoluent rapidement : une même question posée dans six mois pourra produire des réponses différentes.</p>
+<h3>Note de methode</h3>
+<p>Ce benchmark a ete realise en mars 2026 sur trois plateformes d'IA generative : ChatGPT (modele GPT-4o), Perplexity (modele Sonar) et Claude (modele Sonnet 4). 17 requetes en francais, redigees dans un registre conversationnel naturel (tutoiement, abreviations, formulations du quotidien). Les reponses ont ete collectees, croisees et analysees sans modification.</p>
+<p>Les resultats refletent l'etat des modeles a la date du test. Les agents IA evoluent rapidement : une meme question posee dans six mois pourra produire des reponses differentes.</p>
 
 <div class="footer-note">
-    <p>Document informatif — Mickaël Tsakiris — Mars 2026<br>
-    Ce document n'est pas destiné à la publication. Il est produit à titre personnel pour illustrer les enjeux de visibilité des marques de luxe dans les agents d'intelligence artificielle.</p>
+    <p>Document informatif — Mickael Tsakiris — Mars 2026<br>
+    Ce document n'est pas destine a la publication. Il est produit a titre personnel pour illustrer les enjeux de visibilite des marques de luxe dans les agents d'intelligence artificielle.</p>
 </div>
 
 </main>
+
+<script>
+// Progress bar + sidebar progress text
+window.addEventListener('scroll', function() {
+    var h = document.documentElement;
+    var pct = Math.round((h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100);
+    document.getElementById('progressBar').style.width = pct + '%';
+    var pt = document.getElementById('progressText');
+    if (pt) pt.textContent = pct + ' % lu';
+});
+
+// Smooth scroll for sidebar links
+document.querySelectorAll('.sidebar a[href^="#"]').forEach(function(link) {
+    link.addEventListener('click', function(e) {
+        var target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    });
+});
+
+// Active section tracking
+var sections = document.querySelectorAll('[id]');
+var navLinks = document.querySelectorAll('.sidebar a[href^="#"]');
+window.addEventListener('scroll', function() {
+    var scrollPos = window.scrollY + 120;
+    var current = '';
+    sections.forEach(function(section) {
+        if (section.offsetTop <= scrollPos) {
+            current = section.getAttribute('id');
+        }
+    });
+    navLinks.forEach(function(link) {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === '#' + current) {
+            link.classList.add('active');
+        }
+    });
+});
+</script>
 </body>
 </html>
